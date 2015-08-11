@@ -2,10 +2,10 @@
 =========================
 
 This tutorials shows how to setup and run a simple
-GROMACS simulation, using one methane molecule in tip4p water. In this
-part I'll show you how to create the molecule and use *gmx pdb2gmx* to get
-the needed .gro and .top files for the simulation. Additionally we'll
-solvate the simulation box.
+GROMACS simulation, using one methane molecule in tip4p water. I'll show you how
+to create the molecule and use *gmx pdb2gmx* to get the needed .gro and .top
+files for the simulation. Additionally we'll solvate the simulation box. Lastly,
+we'll run the simulation in three steps.
 
 Setup residues for pdb2gmx
 --------------------------
@@ -153,6 +153,8 @@ clear. Here's my visualization of the system after some tweaking:
 
 ![methane in water](box.png)
 
+Your methane might look like it is outside of the box. That's okay, because
+we're using a periodic boundary condition.
 
 Energy Minimization
 -------------------
