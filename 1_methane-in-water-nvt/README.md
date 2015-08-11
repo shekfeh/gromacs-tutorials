@@ -300,9 +300,9 @@ group together residues, atoms, etc. For us let's simply create a new index
 group for the water oxygen atoms and the carbon on the methane. Enter the
 following:
 
-	a CT1
-	a OW
-	q
+	> a CT1
+	> a OW
+	> q
 
 The index file is saved as index.ndx. Now let's call *gmx rdf* to calculate the
 radial distribution function:
