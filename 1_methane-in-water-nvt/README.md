@@ -149,12 +149,8 @@ you have vmd installed, do the following:
 
 You'll see a box of water. It may be difficult to see where the
 methane is, but there are ways to adjust the view to make things more
-clear. Here's my visualization of the system after some tweaking:
-
-![methane in water](box.png)
-
-Your methane might look like it is outside of the box. That's okay, because
-we're using a periodic boundary condition.
+clear. Your methane might look like it is outside of the box. That's okay,
+because we're using a periodic boundary condition.
 
 Energy Minimization
 -------------------
@@ -188,7 +184,7 @@ lists every single option available and the settings that were used. Most of
 these are not relevant for energy minimization. Now let's run the energy
 minimization step:
 
-	gmx mdrun -deffnm min &
+	$ gmx mdrun -deffnm min &
 
 Notice I simply used the flag `-deffnm`. This means that all output files will
 start with `min`. You can alternatively specify each option. If you want to see
