@@ -234,16 +234,16 @@ of the file are several items telling GROMACS how often to output
 certain files. In the third section notice we are telling GROMACS this
 is not a continuation of another simulation, use the LINCS constraint
 algorithm, and only constrain the hydrogen bonds. We will be
-generating velocities corresponding to a 300 K temperature. Also note
-we are using a temperature coupling at 300 K. For more information on
+generating velocities corresponding to a 298.15 K temperature. Also note
+we are using a temperature coupling at 298.15 K. For more information on
 all of these options check out the mdp options page.
 
-Notice that I am setting the cutoffs to 1.0 nm. Generally you should check the
-article on the force field's parameterization to see what cutoffs were
-used when the force field was designed. For the original OPLS it was
-parameterized for 1.3 to 1.5 nm depending on the molecule type. For
-this tutorial I wanted to be able to make the box a little bit
-smaller, which is why I'm using 1.0 nm. It's up to you decide a
+Notice that I am setting the cutoffs to 1.0 nm. Generally you should
+check the article on the force field's parameterization to see what
+cutoffs were used when the force field was designed. For the original
+OPLS it was parameterized for 1.3 to 1.5 nm depending on the molecule
+type. For this tutorial I wanted to be able to make the box a little
+bit smaller, which is why I'm using 1.0 nm. It's up to you decide a
 logical cutoff based on your research and applications.
 
 Now using this .mdp file do:
@@ -260,26 +260,28 @@ Now let's just take a look at the temperature to see if it's equilibrated:
 	$ gmx energy -f eql.edr -xvg none -o eqltemp.xvg
 
 Select the number corresponding to `Temperature` and press enter twice. You'll
-notice that the average temperature is around 300 K, which is what we wanted.
+notice that the average temperature is around 298.15 K, which is what we wanted.
 Now plot the temperature inside gnuplot with:
 
 	> plot 'eqltemp.xvg' w l 
 
 Notice that at the beginning it fluctuates wildly and then begins to steady out
-around 300 K. It should look something like this:
+around 298.15 K. It should look something like this:
 
 ![Equilibration](eqltemp.png)
+
+Note that this equilibration is pretty short (100 ps), but we are dealing with a
+very small system.
 
 Production
 ----------
 
 Now we're ready for the production run. We'll be using essentially the
-same .mdp file but with two major changes - 1. we will not be
-generating velocities, and 2. we will tell Gromacs that this is a
+same .mdp file but with two major changes - 1. We will not be
+generating velocities, and 2. We will tell GROMACS that this is a
 continuation of a previous simulation.  You can get the mdp file
-[here](https://gist.github.com/wesbarnett/9815717#file-prd-mdp).
-Additionally the sampling rate for the energy and coordinates has
-changed and the simulation is now 10 ns.  
+[here](prd.mdp).  Additionally the sampling rate for the energy and coordinates
+has changed and the simulation is now 10 ns.  
 
 	$ gmx grompp -f prd.mdp -c eql.gro -p topol.top -o prd -po prdout.mdp
 	$ gmx mdrun -deffnm prd & 
@@ -297,15 +299,16 @@ index file so that we have the proper groups available for when we call `gmx rdf
 
 	$ gmx make_ndx -f prd.gro 
 
-You will now be entered into the make_ndx prompt to select, delete, and group
-together residues, atoms, etc. For us let's simply create a new index group for
-the water oxygen atoms and the carbon on the methane. Enter the following:
+You will now be entered into the *gmx make_ndx* prompt to select, delete, and
+group together residues, atoms, etc. For us let's simply create a new index
+group for the water oxygen atoms and the carbon on the methane. Enter the
+following:
 
 	a CT1
 	a OW
 	q
 
-The index file is saved as index.ndx. Now let's call `gmx rdf` to calculate the
+The index file is saved as index.ndx. Now let's call *gmx rdf* to calculate the
 radial distribution function:
 
 	$ gmx rdf -f prd.xtc -n index.ndx -xvg none
