@@ -287,6 +287,14 @@ Analysis
 Using *gmx energy* as above, get the average temperature, pressure, and density.
 Are they what you expect?
 
+Here's my output:
+
+	Energy                      Average   Err.Est.       RMSD  Tot-Drift
+	-------------------------------------------------------------------------------
+	Temperature                 298.152     0.0016    3.63648 0.00267146  (K)
+	Pressure                    1.13652      0.034     291.55  0.0616002  (bar)
+	Density                     995.063      0.011    5.49186 -0.0549838  (kg/m^3)
+
 Additionally, you can visualize your simulation using a program like vmd. To
 open the production part do:
 
