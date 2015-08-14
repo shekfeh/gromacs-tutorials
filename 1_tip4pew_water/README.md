@@ -2,7 +2,8 @@ Tip4pEW Water
 =============
 
 In this introductory tutorial, I'll show you how to create a box of water and
-run a simple simulation on it. At the end we'll find out the density of water.
+run a simple simulation on it with constant temperature and pressure. At the end
+we'll find out the density of water.
 
 Setup
 -----
@@ -16,13 +17,10 @@ information is provided by the force field. Non-bonded interactions included van
 der Waals interactions and Coulomb interactions. Bonded interactions include
 bonds, angles, and dihedrals. The parameters file includes information on how
 long to run the simulation, the timestep, temperature and pressure coupling,
-etc.
+etc. Below we'll obtain / create these files.
 
 At this point I would suggest creating a directory to store files for this
-tutorial:
-
-	mkdir TIP4PEW
-	cd TIP4PEW
+tutorial.
 
 ### Topology file
 
@@ -32,7 +30,8 @@ atomtypes ]`, `[ bondtypes ]`, `[ angletypes ]`, and `[ dihedraltypes ]`
 directives. Then in the topology file usually we specify different `[
 moleculetype ]` directives which contain `[ atoms ]`, `[ bonds ]`, and `[
 dihedrals ]` which refer back to the force field. Don't worry about this too
-much right now. Water models include all of these for use.
+much right now. Water models include all of these for us. See Chapter 5 of the
+reference manual for more information.
 
 Create a file named `topol.top` with the following text:
 
@@ -87,23 +86,28 @@ Here are the files we'll be using:
 * [Equilibration 2](mdp/eql2.mdp)
 * [Production](mdp/prd.mdp)
 
-Create a folder in the `TIP4PEW` directory named `mdp` and download and store
+Create a folder in your project directory named `mdp` and download and store
 the files there.
 
-There will be a few things common to all five of our files:
+There will be a few things common to all five of our files. In each description,
+I only give a very small comment. See the [GROMACS page on
+this](http://manual.gromacs.org/documentation/5.1/user-guide/mdp-options.html)
+for more information on each option.
 
 |  parameter     | value     | explanation |
 | ---------------|-----------|-------------| 
-|  cutoff-scheme | Verlet    | This is now the default, but we provide it here in order to avoid any notes. _Generate a pair list with buffering._ |
-|  coulombtype   | PME       | Use Particle-Mesh Ewald for long-range (k-space) electrostatics |
+|  cutoff-scheme | Verlet    | Use in creating neighbor lists. This is now the default, but we provide it here in order to avoid any notes.|
+|  coulombtype   | PME       | Use Particle-Mesh Ewald for long-range (k-space) electrostatics. |
 |  rcoulomb      | 1.0       | Cut-off for real/k-space for PME (nm). |
-|  vdwtype       | Cut-off   | van der Walls forces cut-off at `rvdw` |
+|  vdwtype       | Cut-off   | van der Walls forces cut-off at `rvdw`. |
 |  rvdw          | 1.0       | Cut-off for VDW (nm). |
-|  DispCorr      | EnerPress | _apply long range dispersion corrections for Energy and Pressure_|
+|  DispCorr      | EnerPress | Long-range correction for VDW for both energy and pressure. |
 
 Cut-off distances should be set keeping in mind how the force field was
-parameterized. We've chosen 1.0 nm for our cut-offs here, but you may determine
-for your system to choose something else.
+parameterized. In other words, its a good idea to look at the journal article
+that describes how the force field was created. We've chosen 1.0 nm for our
+cut-offs here, which is common enough for OPLS, but you may determine for your
+system to choose something else.
 
 Additionally in each part we'll also be outputting an energy file, a log file,
 and a compressed trajectory file. The rate of output (in simulation steps) for
@@ -113,7 +117,7 @@ respectively. We'll output more information in the production run.
 For each part, except for the second minimization, we'll also be constraining
 all bonds involving a hydrogen using the LINCS algorithm by setting
 `constraint-algorithm = lincs` and `constraints = h-bonds`. This allows us to use
-a larger time step than otherwise. 
+a larger time step than otherwise.  
 
 For the first minimization we use the steepest descents algorithm by setting
 `integrator = steep` to minimize the energy of the system with a maximum of
@@ -124,7 +128,9 @@ required in most cases, but I personally like to have these two steps to ensure
 that my system has a good starting structure. This algorithm does not support
 constraints, which is why they are turned off. Additionally we have `define =
 -DFLEXIBLE`. This lets GROMACS know to use flexible water, since by default all
-water models are rigid.
+water models are rigid. In the water model's topology file, which we have
+includes, there is an if statement that looks for the `FLEXIBLE` variable to
+defined.
 
 The last three steps all use the leap-frog integrator by setting `integrator =
 md`. Additionally each one will use a 2 fs time step by setting `dt = 0.002`.
@@ -135,26 +141,33 @@ several parameters shown below:
 |  parameter     | value       | explanation |
 | ---------------|-------------|-------------| 
 | gen-vel        | yes         | Generate velocities for each atomic site according to a Maxwell-Boltzmann distribution. **Only generate velocities for your first equilibration step**. This gets us close to the temperature at which we will couple the system.        |
-| gen-temp       | 298.15      |  Temperature in K to use for `gen-vel`.       |
+| gen-temp       | 298.15      |  Temperature in K to use for `gen-vel`. Unless
+you are doing some strange / interesting stuff, this should be the same as
+`ref-t`. |
 | tcoupl         | Nose-Hoover |  The algorithm to use for temperature coupling. Nose-Hoover correctly produces the canonical ensemble.       |
 | tc-grps        | System      | Which groups to couple. You can couple different groups of atoms separately, but we'll just couple the whole system. |
-| tau-t          | 2.0         | Time constant for coupling. See the manual for details |
+| tau-t          | 2.0         | Time constant for coupling. See the manual for details. |
 | ref-t          | 298.15      | The temperature in K at which to couple. |
-| nhchainlength  | 1           | Leap-frog integrator only supports 1, but by default this is 10. This is set so we don't get a message later. |
+| nhchainlength  | 1           | Leap-frog integrator only supports 1, but by default this is 10. This is set so GROMACS doesn't complain to us. |
 
-The point of this first equilibration is to get use to the correct temperature
-(298.15 K) before adding pressure coupling. We have set `nsteps = 50000`, so
-with a 2 fs timestep, that means that this will run for 100 ps.
+The point of this first equilibration is to get us to the correct temperature
+(298.15 K) before adding pressure coupling. Adding temperature and pressure
+coupling at the same time can cause your system to be unstable and crash. We
+don't want to shock our system at the beginning. Additionally, we have set
+`nsteps = 50000`, so with a 2 fs timestep, that means that this will run for 100
+ps. This is adequate for what we are doing here, but in larger / more
+complicated systems you may need to equilibrate longer.
 
 The second equilibration adds pressure coupling. Note that we are _not_
 generating velocities again, since that will undo some of the work we just did.
 We also set `continuation = yes` for the constraints, since we are continuing
-the simulation from the first equilibration. This part will run for 1 ns.
+the simulation from the first equilibration. This part will run for 1 ns. Again,
+this may need to be longer for other systems.
 
 |  parameter       | value       | explanation |
 | -----------------|-------------|-------------| 
 | pcoupl           | Parrinello-Rahman |  The algorithm to use for pressure coupling.  Parrinello-Rahman correctly produces the isobaric-isothermal ensemble when used with Nose-Hoover.       |
-| tau-p            | 2.0         | Time constant for coupling. See the manual for details |
+| tau-p            | 2.0         | Time constant for coupling. See the manual for details. |
 | ref-p            | 1.0         | The pressure in bar at which to couple. |
 | compressibility  | 4.46e-5     | The compressibility of the system in bar^-1.  |
 
@@ -164,7 +177,7 @@ equilibration, except we are outputting more data and running for 10 ns.
 Simulation
 ----------
 
-Phew. We have all the files we need now to run each part of the simulation. Each
+We have all the files we need now to run each part of the simulation. Each
 part you typically run *gmx grompp* to preprocess the three files we now have
 (.gro, .top, and .mdp) into a .tpr file (sometimes confusingly also called a
 topology file).
@@ -181,15 +194,16 @@ First, let's run our two minimization steps by doing the following:
 	
 At each part we are reading in the .mdp file with the `-f` flag. By default if
 `-c` and `-p` flags are not specified GROMACS uses `conf.gro` and `topol.top`
-for the structure and topology files. Additionally we are outputting a process
+for the structure and topology files. Additionally we are outputting a processed
 topology file `-pp` and mdp file `-po`. These are optional, but probably worth
 looking at, especially the processed mdp file, since it is commented.
 
 At each subsequent step we read in the previous step's last structure file or
-checkpoint file using the `-c` and `-t` flags. If the checkpoint file is not
-present, GROMACS will use the structure file, so it is a good practice to
-specify both. At each *gmx mdrun* we are telling GROMACS to use a default name
-for each input and output file, since several files are output.
+checkpoint file using the `-c` and `-t` flags. By default GROMACS outputs
+checkpoint files every 15 minutes and at the last step. If the checkpoint file
+is not present, GROMACS will use the structure file defined by `-c`, so it is a
+good practice to specify both. At each *gmx mdrun* we are telling GROMACS to use
+a default name for each input and output file, since several files are output.
 
 Note we are using `-maxwarn 1` for the second minimization. Only use this flag
 if you know what you are doing! In this case we get a warning about the
@@ -242,7 +256,7 @@ again. Plot it in gnuplot as above. You should see something like:
 
 ![Equilibration Temperature](eql-temp.png)
 
-Note that initially the temperature initially fluctuates wildly but eventually
+Note that the temperature initially fluctuates wildly but eventually
 settles.
 
 ### Equilibration 2 (NPT)
@@ -272,3 +286,22 @@ Analysis
 
 Using *gmx energy* as above, get the average temperature, pressure, and density.
 Are they what you expect?
+
+Additionally, you can visualize your simulation using a program like vmd. To
+open the production part do:
+
+	vmd prd.gro prd.xtc
+
+Here's a snapshot:
+
+![Water](water1.tga)
+
+Note that do to the period boundary condition this can look kind of strange
+with bonds stretching across the box. You can make molecules whole by using *gmx
+trjconv*:
+
+	gmx trjconv -f prd.xtc -s prd.tpr -pbc mol -o prd-mol.xtc
+
+Viewing that file should look much nicer:
+
+![Water](water2.tga)
