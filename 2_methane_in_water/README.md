@@ -234,4 +234,4 @@ Now run *gmx rdf*:
 At the prompt select `C` for the reference group. Then select `OW`. A plot of
 the result should look something like this:
 
-[C-OW RDF](rdf.png)
+![C-OW RDF](rdf.png)
