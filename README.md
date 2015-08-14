@@ -10,6 +10,7 @@ Obviously I also assume you have GROMACS installed on a machine available to you
 
 ##Contents
 
+|                                  |
 |----------------------------------|
 | [TIP4PEW Water](1_tip4pew_water) |
 | ![Tutorial 1](img/tutorial1.png) |
