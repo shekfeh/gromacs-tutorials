@@ -94,15 +94,12 @@ There will be a few things common to all five of our files:
 
 |  parameter     | value     | explanation |
 | ---------------|-----------|-------------| 
-|  cutoff-scheme | Verlet    | This is now the default, but we provide it here in
-order to avoid any notes. _Generate a pair list with buffering._
-|  coulombtype   | PME       | Use Particle-Mesh Ewald for long-range (k-space)
-electrostatics |
+|  cutoff-scheme | Verlet    | This is now the default, but we provide it here in order to avoid any notes. _Generate a pair list with buffering._ |
+|  coulombtype   | PME       | Use Particle-Mesh Ewald for long-range (k-space) electrostatics |
 |  rcoulomb      | 1.0       | Cut-off for real/k-space for PME (nm). |
 |  vdwtype       | Cut-off   | van der Walls forces cut-off at `rvdw` |
 |  rvdw          | 1.0       | Cut-off for VDW (nm). |
-|  DispCorr      | EnerPress | _apply long range dispersion corrections for
-Energy and Pressure_|
+|  DispCorr      | EnerPress | _apply long range dispersion corrections for Energy and Pressure_|
 
 Cut-off distances should be set keeping in mind how the force field was
 parameterized. We've chosen 1.0 nm for our cut-offs here, but you may determine
@@ -137,20 +134,13 @@ several parameters shown below:
 
 |  parameter     | value       | explanation |
 | ---------------|-------------|-------------| 
-| gen-vel        | yes         | Generate velocities for each atomic site
-according to a Maxwell-Boltzmann distribution. **Only generate velocities for
-your first equilibration step**. This gets us close to the temperature at which
-we will couple the system.        |
+| gen-vel        | yes         | Generate velocities for each atomic site according to a Maxwell-Boltzmann distribution. **Only generate velocities for your first equilibration step**. This gets us close to the temperature at which we will couple the system.        |
 | gen-temp       | 298.15      |  Temperature in K to use for `gen-vel`.       |
-| tcoupl         | Nose-Hoover |  The algorithm to use for temperature coupling
-Nose-Hoover correctly produces the canonical ensemble.       |
-| tc-grps        | System      | Which groups to couple. You can couple
-different groups of atoms separately, but we'll just couple the whole system. |
-| tau-t          | 2.0         | Time constant for coupling. See the manual for
-details |
+| tcoupl         | Nose-Hoover |  The algorithm to use for temperature coupling Nose-Hoover correctly produces the canonical ensemble.       |
+| tc-grps        | System      | Which groups to couple. You can couple different groups of atoms separately, but we'll just couple the whole system. |
+| tau-t          | 2.0         | Time constant for coupling. See the manual for details |
 | ref-t          | 298.15      | The temperature in K at which to couple. |
-| nhchainlength  | 1           | Leap-frog integrator only supports 1, but by
-default this is 10. This is set so we don't get a message later. |
+| nhchainlength  | 1           | Leap-frog integrator only supports 1, but by default this is 10. This is set so we don't get a message later. |
 
 The point of this first equilibration is to get use to the correct temperature
 (298.15 K) before adding pressure coupling. We have set `nsteps = 50000`, so
@@ -163,10 +153,8 @@ the simulation from the first equilibration. This part will run for 1 ns.
 
 |  parameter       | value       | explanation |
 | -----------------|-------------|-------------| 
-| pcoupl           | Parrinello-Rahman |  The algorithm to use for pressure coupling
- Parrinello-Rahman correctly produces the isobaric-isothermal ensemble.       |
-| tau-p            | 2.0         | Time constant for coupling. See the manual for
-details |
+| pcoupl           | Parrinello-Rahman |  The algorithm to use for pressure coupling  Parrinello-Rahman correctly produces the isobaric-isothermal ensemble.       |
+| tau-p            | 2.0         | Time constant for coupling. See the manual for details |
 | ref-p            | 1.0         | The pressure in bar at which to couple. |
 | compressibility  | 4.46e-5     | The compressibility of the system in bar^-1.  |
 
