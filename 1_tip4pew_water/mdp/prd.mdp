@@ -1,6 +1,6 @@
 
 integrator               = md        
-dt                       = 0.002     ; 1 fs
+dt                       = 0.002     ; 2 fs
 nsteps                   = 5000000   ; 10.0 ns
 
 nstenergy                = 5000
