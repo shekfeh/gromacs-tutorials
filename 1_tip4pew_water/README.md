@@ -294,7 +294,7 @@ open the production part do:
 
 Here's a snapshot:
 
-![Water](water1.tga)
+![Water](water1.png)
 
 Note that do to the period boundary condition this can look kind of strange
 with bonds stretching across the box. You can make molecules whole by using *gmx
@@ -304,4 +304,4 @@ trjconv*:
 
 Viewing that file should look much nicer:
 
-![Water](water2.tga)
+![Water](water2.png)
