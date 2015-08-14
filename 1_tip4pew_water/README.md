@@ -58,7 +58,7 @@ my have it installed in a different directory. In that directory you'll see
 several `.gro` files, one of which is `tip4p.gro`. You'll also see the folder
 `oplsaa.ff` which we've included in our topology file above. There isn't a
 structure file specific to Tip4pEW. Four-point water structure is essentially
-the same for Tip4p and Tip4pEW. What make them different is the force field
+the same for Tip4p and Tip4pEW. What makes them different is the force field
 parameters.
 
 To create a box of water using that structure file do:
@@ -136,7 +136,7 @@ several parameters shown below:
 | ---------------|-------------|-------------| 
 | gen-vel        | yes         | Generate velocities for each atomic site according to a Maxwell-Boltzmann distribution. **Only generate velocities for your first equilibration step**. This gets us close to the temperature at which we will couple the system.        |
 | gen-temp       | 298.15      |  Temperature in K to use for `gen-vel`.       |
-| tcoupl         | Nose-Hoover |  The algorithm to use for temperature coupling Nose-Hoover correctly produces the canonical ensemble.       |
+| tcoupl         | Nose-Hoover |  The algorithm to use for temperature coupling. Nose-Hoover correctly produces the canonical ensemble.       |
 | tc-grps        | System      | Which groups to couple. You can couple different groups of atoms separately, but we'll just couple the whole system. |
 | tau-t          | 2.0         | Time constant for coupling. See the manual for details |
 | ref-t          | 298.15      | The temperature in K at which to couple. |
@@ -153,7 +153,7 @@ the simulation from the first equilibration. This part will run for 1 ns.
 
 |  parameter       | value       | explanation |
 | -----------------|-------------|-------------| 
-| pcoupl           | Parrinello-Rahman |  The algorithm to use for pressure coupling  Parrinello-Rahman correctly produces the isobaric-isothermal ensemble.       |
+| pcoupl           | Parrinello-Rahman |  The algorithm to use for pressure coupling.  Parrinello-Rahman correctly produces the isobaric-isothermal ensemble when used with Nose-Hoover.       |
 | tau-p            | 2.0         | Time constant for coupling. See the manual for details |
 | ref-p            | 1.0         | The pressure in bar at which to couple. |
 | compressibility  | 4.46e-5     | The compressibility of the system in bar^-1.  |
