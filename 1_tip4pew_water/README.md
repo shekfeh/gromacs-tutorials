@@ -1,4 +1,4 @@
-Tip4pEW Water
+TIP4PEW Water
 =============
 
 In this introductory tutorial, I'll show you how to create a box of water and
@@ -44,20 +44,20 @@ Create a file named `topol.top` with the following text:
 	[ Molecules ] 
 
 As you can see we've included the force field for OPLS-AA. Additionally we've
-included the Tip4pEW water model. After this you'll see a `[ System ]` directive,
+included the TIP4PEW water model. After this you'll see a `[ System ]` directive,
 which includes just the name of the system, which can be anything you want.
 Lastly, we list out each `moleculetype` and how many there are under `[
 Molecules ]`. Right now we don't have any (we'll get those in a minute).
 
 ### Structure file
 
-The structure of Tip4pEW is already provided by GROMACS in the topology
+The structure of TIP4PEW is already provided by GROMACS in the topology
 directory. This standard location is typically `/usr/lib/gromacs/top`, but you
 my have it installed in a different directory. In that directory you'll see
 several `.gro` files, one of which is `tip4p.gro`. You'll also see the folder
 `oplsaa.ff` which we've included in our topology file above. There isn't a
-structure file specific to Tip4pEW. Four-point water structure is essentially
-the same for Tip4p and Tip4pEW. What makes them different is the force field
+structure file specific to TIP4PEW. Four-point water structure is essentially
+the same for TIP4P and TIP4PEW. What makes them different is the force field
 parameters.
 
 To create a box of water using that structure file do:

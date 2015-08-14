@@ -2,7 +2,7 @@ One Methane in Water
 ====================
 
 In this tutorial I'll show you how to create a system containing one OPLS
-methane in a box of Tip4pEW water.
+methane in a box of TIP4PEW water.
 
 Setup
 -----
