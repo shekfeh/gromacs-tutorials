@@ -82,7 +82,7 @@ that directory instead of the one provided in the GROMACS default directory.
 Now go into `oplsaa.ff` and open `aminoacids.rtp`. You'll notice several
 residues already in the file.  We're going to add a new file called
 `methane.rtp` for our methane with a residue that we'll call `CH4`. Close
-`aminoacids.rtp`. We'll need to tell pdb2gmx the atoms and bonds in the atom in
+`aminoacids.rtp`. We'll need to tell *gmx pdb2gmx* the atoms and bonds in the atom in
 our residue file. We could also tell it the angles, but we'll leave them out,
 since *gmx pdb2gmx* will figure it out for us. You should create with the
 following contents and save as `methane.rtp` in the `oplsaa.ff` directory:
@@ -115,7 +115,7 @@ hydrogen. We could optionally add `[ angles ]`, but as stated earlier, Gromacs
 will sort this out for us. Now close the file. See section 5.6 for more
 information about this.
 
-### Create pdb file and run pdb2gmx
+### Create pdb file and run *gmx pdb2gmx*
 
 Now we are ready to create the pdb file. There are several programs out there
 to create molecule structure files.
@@ -155,6 +155,10 @@ file for our solute (methane). We won't be using that one. In the `topol.top`
 file notice that there is an `[ angles ]` section as promised. You'll also want
 to rename the compound in `topol.top`.  Take a look and explore each file.
 Chapter 5 of the Gromacs manual will help you understand the topology file more.
+
+For those who use *gmx pdb2gmx* to generate topologies for large proteins,
+things can get more complicated. This is merely a simple example, and really we
+probably could have found this topology somewhere else.
 
 ### Solvate system
 
