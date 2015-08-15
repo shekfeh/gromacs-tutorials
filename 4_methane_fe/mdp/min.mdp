@@ -1,0 +1,34 @@
+
+integrator               = steep
+nsteps                   = 50000
+
+nstenergy                = 500
+nstlog                   = 500
+nstxout-compressed       = 1000
+
+constraint-algorithm     = lincs
+constraints              = h-bonds
+
+cutoff-scheme            = Verlet
+
+coulombtype              = PME
+rcoulomb                 = 1.0
+
+vdwtype                  = Cut-off
+rvdw                     = 1.0
+DispCorr                 = EnerPres
+
+free-energy              = yes
+init-lambda-state        = MYLAMBDA
+calc-lambda-neighbors    = -1
+vdw-lambdas              = 0.00 0.00 0.00 0.00 0.00 0.10 0.20 0.30 0.40 0.50 0.60 0.70 0.80 0.90 1.00
+coul-lambdas             = 0.00 0.25 0.50 0.75 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00 1.00
+couple-moltype           = Methane
+couple-lambda0           = vdw-q
+couple-lambda1           = none
+couple-intramol          = no
+nstdhdl                  = 100
+sc-alpha                 = 0.5
+sc-coul                  = no
+sc-power                 = 1
+sc-sigma                 = 0.3

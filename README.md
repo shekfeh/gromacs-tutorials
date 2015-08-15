@@ -13,7 +13,7 @@ Obviously I also assume you have GROMACS installed on a machine available to you
 1. [Water](1_tip4pew_water)
 2. [One methane in water](2_methane_in_water)
 3. [Several methanes in water](3_methanes_in_water)
-4. Free energy of solvation of methane (in progress)
+4. [Free energy of solvation of methane](4_methane_fe)
 
 ## Links
 Some of the other software that I use in these tutorials that you may find
