@@ -64,29 +64,16 @@ Here's an explanation of some of these new values:
 
 |  parameter     | value     | explanation |
 | ---------------|-----------|-------------| 
-| init-lambda-state  |       | The value I have in the files is not actually
-what will be present when we run the simulation. This is a placeholder for an
-integer number. We are simulating 15 different states, so this number will range
-from 0 through 14. Our script will replace it for each state. |
-| calc-lambda-neighbors | -1 |  The delta H values will be written for each
-state. Necessary for MBAR. |
-| vdw-lambdas  | see file | We're turning off VDW at 0.1-lambda increments after
-electrostatics are off. init-lambda-state=0 corresponds to the first value in
-this array, init-lambda-state=1 the second, and so on. |
-| coul-lambdas  | see file | We're turning off electrostatics at 0.25-lambda
-increments first. Just like vdw-lambdas, the init-lambda-state indicates which
-column is being used.|
-| couple-moltype | Methane | Matches the name of the `[ moleculetype ]` in the
-topology file that we are coupling/decoupling |
-| couple-lambda0 | vdw-q | When lambda is 0 (state A) both VDW and
-electrostatics are completely on. |
-| couple-lambda1 | none | When lambda is 1 (state B) no nonbonded interations
-are on. |
-| couple-intramol | no | Intramolecular terms are not turned off. Usually what
-you want so you don't have to run it again in vacuum. |
+| init-lambda-state  |       | The value I have in the files is not actually what will be present when we run the simulation. This is a placeholder for an integer number. We are simulating 15 different states, so this number will range from 0 through 14. Our script will replace it for each state. |
+| calc-lambda-neighbors | -1 |  The delta H values will be written for each state. Necessary for MBAR. |
+| vdw-lambdas  | see file | We're turning off VDW at 0.1-lambda increments after electrostatics are off. init-lambda-state=0 corresponds to the first value in this array, init-lambda-state=1 the second, and so on. |
+| coul-lambdas  | see file | We're turning off electrostatics at 0.25-lambda increments first. Just like vdw-lambdas, the init-lambda-state indicates which column is being used.|
+| couple-moltype | Methane | Matches the name of the `[ moleculetype ]` in the topology file that we are coupling/decoupling |
+| couple-lambda0 | vdw-q | When lambda is 0 (state A) both VDW and electrostatics are completely on. |
+| couple-lambda1 | none | When lambda is 1 (state B) no nonbonded interations are on. |
+| couple-intramol | no | Intramolecular terms are not turned off. Usually what you want so you don't have to run it again in vacuum. |
 | nstdhdl |  100 | How often in steps we're outputting dHdlambda |
-| sc-alpha | 0.5 | We're using a soft-core potential for VDW. This parameter is
-a term in the soft-core function. See the manual. |
+| sc-alpha | 0.5 | We're using a soft-core potential for VDW. This parameter is a term in the soft-core function. See the manual. |
 | sc-power | 1 | See above. |
 | sc-sigma | 0.3 | See above. |
 | sc-coul  | no | Don't use soft core for electrostatics |
