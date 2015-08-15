@@ -10,8 +10,10 @@ Obviously I also assume you have GROMACS installed on a machine available to you
 
 ##Contents
 
-1. [TIP4PEW Water](1_tip4pew_water)
-2. [One OPLS methane in TIP4PEW](2_methane_in_water)
+1. [Water](1_tip4pew_water)
+2. [One methane in water](2_methane_in_water)
+3. Several methanes in water (in progress)
+4. Free energy of solvation of methane (in progress)
 
 ## Links
 Some of the other software that I use in these tutorials that you may find

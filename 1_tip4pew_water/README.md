@@ -1,5 +1,5 @@
-TIP4PEW Water
-=============
+Tutorial 1: Water
+=================
 
 In this introductory tutorial, I'll show you how to create a box of water and
 run a simple simulation on it with constant temperature and pressure. At the end
