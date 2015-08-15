@@ -188,5 +188,17 @@ as well.
 
 There are a couple of other command line flags you can use with the
 `alchemical_analysis` script. Be sure to checkout the homepage of the script and
-the [paper on best practices in free energy analysis](10.1007/s10822-015-9840-9).
+the [paper on best practices in free energy
+analysis](10.1007/s10822-015-9840-9). I won't go into detail of all the options
+here.
+
+Summary
+-------
+
+In this tutorial we performed a free energy simulation on methane in water. We
+turned off electrostatics linearly first, and then we used a soft-core potential
+to turn off the van der Waals interactions. The intramolecular interactions for
+methane remained on, so its as if we were removing the methane from the water
+and placing it in a vacuum. Our result of 2.29 kcal /mol is comparable to
+published results.
 
