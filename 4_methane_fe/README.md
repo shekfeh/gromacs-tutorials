@@ -4,7 +4,7 @@ Tutorial 4: Methane Free Energy of Solvation
 In this tutorial I'll show you how to perform a free energy of solvation
 simulation using GROMACS, as well as how to calculate the free energy change
 using [MBAR](http://dx.doi.org/10.1063/1.2978177). As always, this tutorial builds off of the previous ones, especially
-the tutorials 1 and 2.
+tutorials 1 and 2.
 
 I recommend visiting the Alchemistry website if you are unfamiliar with free
 energy calculations. [This
