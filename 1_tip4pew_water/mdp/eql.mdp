@@ -14,7 +14,6 @@ constraint-algorithm     = lincs
 constraints              = h-bonds
 
 cutoff-scheme            = Verlet
-rlist                    = 1.0
 
 coulombtype              = PME
 rcoulomb                 = 1.0

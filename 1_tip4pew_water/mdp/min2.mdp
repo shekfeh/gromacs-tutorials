@@ -8,7 +8,6 @@ nstlog                   = 500
 nstxout-compressed       = 1000
 
 cutoff-scheme            = Verlet
-rlist                    = 1.0
 
 coulombtype              = PME
 rcoulomb                 = 1.0
