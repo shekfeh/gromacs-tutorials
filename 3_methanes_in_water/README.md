@@ -68,15 +68,23 @@ multiply the value of g by N/(N-1), which is 10/9. It should look like this:
 ![RDF](rdf2.png)
 
 Now to get the methane-methane [potential of mean
-force](https://en.wikipedia.org/wiki/Potential_of_mean_force)(PMF) from the
-methane-methane RDF we do:
-
-	w = -kTln(g)
+force](https://en.wikipedia.org/wiki/Potential_of_mean_force) (PMF) from the
+methane-methane RDF we do w = -kTln(g).
 
 So to plot this with gnuplot do:
 
-	plot 'rdf.xvg' u 1:(-8.314e-3298.15*log($2*10/9)) w l
+	plot 'rdf.xvg' u 1:(-8.314e-3*298.15*log($2*10/9)) w l
 
 Your plot should look something like this:
 
 ![PMF](pmf.png)
+
+Summary
+-------
+
+In this tutorial we created a box of 10 methanes and 1000 waters using *gmx
+insert-molecules* and *gmx solvate*. We simulated this just like last time,
+except we did it a little longer. We again used *gmx rdf* to get the radial
+distribution function, but this time for methane-methane. We had a to add a
+correction due to this, and from there we were able to get the potential of mean
+force.

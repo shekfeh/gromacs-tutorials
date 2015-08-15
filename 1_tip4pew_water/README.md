@@ -313,3 +313,13 @@ trjconv*:
 Viewing that file should look much nicer:
 
 ![Water](water2.png)
+
+Summary
+-------
+
+In this tutorial we generate a box of TIP4PEW water using *gmx solvate*. We
+simulated it in five distinct parts: minimization 1, minimization 2,
+equilbiration 1, equilibration 2, and production. Each part used its own .mdp
+files which were explained. At each part we used *gmx energy* to extract useful
+information about the simulation. After the production run we were able to find
+the density of TIP4PEW water.

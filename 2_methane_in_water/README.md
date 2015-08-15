@@ -241,3 +241,12 @@ At the prompt select `C` for the reference group. Then select `OW`. A plot of
 the result should look something like this:
 
 ![C-OW RDF](rdf.png)
+
+Summary
+-------
+
+In this tutorial we learned how to create a residue template file (.rtp) for
+use with *gmx pdb2gmx*. We created a structure for OPLS methane and the
+generated a topology for it. From there we put water around it using *gmx
+solvated*. After this we ran a simulation, just like last time. Lastly, we found
+the C-OW radial distribution function using *gmx rdf*.
