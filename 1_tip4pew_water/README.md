@@ -213,15 +213,16 @@ To get a feel for what's going on, let's extract the potential energy of both of
 these parts using the GROMACS command *gmx energy*. Do the following and enter
 the number that corresponds with `Potential`, followed by enter again:
 
-	gmx energy -f min.edr -o min-energy.xvg -xvg none
+	gmx energy -f min.edr -o min-energy.xvg
 
 Now do the same for the second minimization:
 
-	gmx energy -f min2.edr -o min2-energy.xvg -xvg none
+	gmx energy -f min2.edr -o min2-energy.xvg
 
-We use `-xvg none` since by default GROMACS outputs these files in a format for
-the Grace plotting software. In this tutorial I'll be using gnuplot. To plot
-with first start gnuplot:
+The header of the resulting `.xvg.` file will contain information for use with
+the Grace plotting program. I use gnuplot so some of these lines will cause
+errors. I just simply replace every `@` character with `#` in the `.xvg.` file
+and then I can use gnuplot. To plot with first start gnuplot:
 
 	gnuplot
 
@@ -249,7 +250,7 @@ step, by adding the temperature coupling:
 
 Let's take a look at how the temperature varies throughout the simulation:
 
-	gmx energy -f eql.edr -o eql-temp.xvg -xvg none
+	gmx energy -f eql.edr -o eql-temp.xvg 
 
 Choose the number corresponding to `Temperature` at the prompt and hit enter
 again. Plot it in gnuplot as above. You should see something like:

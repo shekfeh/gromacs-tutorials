@@ -96,7 +96,7 @@ bash script to loop through and run each state:
 
 	for ((i=0;i<15;i++)); do
 
-		sed 's/'MYLAMBDA'/'$i'/g' mdp/min.mdp > grompp.mdp
+		sed 's/MYLAMBDA/'$i'/g' mdp/min.mdp > grompp.mdp
 		if [[ $i -eq 0 ]]; then
 			gmx grompp -o min.$i -pp min.$i -po min.$i
 		else
@@ -104,19 +104,19 @@ bash script to loop through and run each state:
 		fi
 		gmx mdrun -deffnm min.$i
 
-		sed 's/'MYLAMBDA'/'$i'/g' mdp/min2.mdp > grompp.mdp
+		sed 's/MYLAMBDA/'$i'/g' mdp/min2.mdp > grompp.mdp
 		gmx grompp -o min2.$i -c min.$i -t min.$i -pp min2.$i -po min2.$i -maxwarn 1
 		gmx mdrun -deffnm min2.$i
 
-		sed 's/'MYLAMBDA'/'$i'/g' mdp/eql.mdp > grompp.mdp
+		sed 's/MYLAMBDA/'$i'/g' mdp/eql.mdp > grompp.mdp
 		gmx grompp -o eql.$i -c min2.$i -t min2.$i -pp eql.$i -po eql.$i
 		gmx mdrun -deffnm eql.$i 
 
-		sed 's/'MYLAMBDA'/'$i'/g' mdp/eql2.mdp > grompp.mdp
+		sed 's/MYLAMBDA/'$i'/g' mdp/eql2.mdp > grompp.mdp
 		gmx grompp -o eql2.$i -c eql.$i -t eql.$i -pp eql2.$i -po eql2.$i
 		gmx mdrun -deffnm eql2.$i
 
-		sed 's/'MYLAMBDA'/'$i'/g' mdp/prd.mdp > grompp.mdp
+		sed 's/MYLAMBDA/'$i'/g' mdp/prd.mdp > grompp.mdp
 		gmx grompp -o prd.$i -c eql2.$i -t eql2.$i -pp prd.$i -po prd.$i
 		gmx mdrun -deffnm prd.$i
 

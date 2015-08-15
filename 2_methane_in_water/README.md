@@ -235,7 +235,7 @@ At the prompt do:
 
 Now run *gmx rdf*:
 
-	gmx rdf -f prd.xtc -n index.ndx -xvg none
+	gmx rdf -f prd.xtc -n index.ndx
 
 At the prompt select `C` for the reference group. Then select `OW`. A plot of
 the result should look something like this:
