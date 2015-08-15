@@ -64,7 +64,7 @@ Here's an explanation of some of these new values:
 
 |  parameter     | value     | explanation |
 | ---------------|-----------|-------------| 
-| init-lambda-state  |       | The value I have in the files is not actually what will be present when we run the simulation. This is a placeholder for an integer number. We are simulating 15 different states, so this number will range from 0 through 14. Our script will replace it for each state. |
+| init-lambda-state  |  MYLAMBDA     | The value I have in the files is not actually what will be present when we run the simulation. This is a placeholder for an integer number. We are simulating 15 different states, so this number will range from 0 through 14. Our script will replace it for each state. |
 | calc-lambda-neighbors | -1 |  The delta H values will be written for each state. Necessary for MBAR. |
 | vdw-lambdas  | see file | We're turning off VDW at 0.1-lambda increments after electrostatics are off. init-lambda-state=0 corresponds to the first value in this array, init-lambda-state=1 the second, and so on. |
 | coul-lambdas  | see file | We're turning off electrostatics at 0.25-lambda increments first. Just like vdw-lambdas, the init-lambda-state indicates which column is being used.|
