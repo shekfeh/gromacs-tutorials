@@ -156,7 +156,7 @@ file notice that there is an `[ angles ]` section as promised. You'll also want
 to rename the compound in `topol.top`.  Take a look and explore each file.
 Chapter 5 of the Gromacs manual will help you understand the topology file more.
 
-__*Note:* `topol.top` and `methane.pdb` will be used again in other tutorials.__
+_**Note:** `topol.top` and `methane.pdb` will be used again in other tutorials._
 
 For those who use *gmx pdb2gmx* to generate topologies for large proteins,
 things can get more complicated. This is merely a simple example, and really we
