@@ -141,11 +141,11 @@ this:
 	HETATM    5  H4  CH4     1      -0.727   1.845   0.351  1.00  0.00           H  
 	END
 
-Save the file as `methane-1.pdb`.
+Save the file as `methane.pdb`. 
 
 Now we can use *gmx pdb2gmx* to create GROMACS .conf and .top files:
 
-	gmx pdb2gmx -f methane-1.pdb
+	gmx pdb2gmx -f methane.pdb
 
 You'll be prompted to choose a force field. Choose OPLS. For the water model
 choose TIP4PEW. Three files will be created: `conf.gro`, `posre.itp`,
@@ -155,6 +155,8 @@ file for our solute (methane). We won't be using that one. In the `topol.top`
 file notice that there is an `[ angles ]` section as promised. You'll also want
 to rename the compound in `topol.top`.  Take a look and explore each file.
 Chapter 5 of the Gromacs manual will help you understand the topology file more.
+
+__*Note:* `topol.top` and `methane.pdb` will be used again in other tutorials.__
 
 For those who use *gmx pdb2gmx* to generate topologies for large proteins,
 things can get more complicated. This is merely a simple example, and really we
