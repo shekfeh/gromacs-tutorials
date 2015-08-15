@@ -8,12 +8,18 @@ I assume you have some working knowledge of the command line. Specifically, you
 should know how to make directories, change into them, and edit text files.
 Obviously I also assume you have GROMACS installed on a machine available to you.
 
+Throughout the tutorials we'll be using OPLS methane and TIP4PEW water.
+
 ##Contents
 
-1. [Water](1_tip4pew_water)
-2. [One methane in water](2_methane_in_water)
-3. [Several methanes in water](3_methanes_in_water)
-4. [Free energy of solvation of methane](4_methane_fe)
+1. [Water](1_tip4pew_water) - Basics of setting up a simulation. Find out the
+   density of TIP4PEW water.
+2. [One methane in water](2_methane_in_water) - How to create a topology file
+   for a molecule and solvate it. Get the radial distribution function.
+3. [Several methanes in water](3_methanes_in_water) - How to put multiple
+   solutes into a system. Get the methane-methane potential of mean force.
+4. [Free energy of solvation of methane](4_methane_fe) - How to do a free energy
+   simulation when coupling a molecule. Use MBAR to get the result.
 
 ## Links
 Some of the other software that I use in these tutorials that you may find
