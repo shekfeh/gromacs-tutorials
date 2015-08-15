@@ -10,7 +10,7 @@ I recommend visiting the [Alchemistry](http://alchemistry.org) website if you
 are unfamiliar with free energy calculations. [This
 page](http://www.alchemistry.org/wiki/Example:_Solvation_of_OPLS-AA_Ethanol_in_TIP3P_Water)
 in particular is relevant. This tutorial follows the direct calculation. State A
-for us is a methane fully interacting in water. State B will be amethane with all
+for us is a methane fully interacting in water. State B will be a methane with all
 van der Waals and Coulomb interactions with the water turned off; the
 methane can interact with itself and the water can interact with itself but not
 with each other. It's as if we have taken the methane out of the water and put
