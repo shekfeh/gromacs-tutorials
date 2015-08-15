@@ -6,8 +6,8 @@ simulation using GROMACS, as well as how to calculate the free energy change
 using [MBAR](http://dx.doi.org/10.1063/1.2978177). As always, this tutorial builds off of the previous ones, especially
 tutorials 1 and 2.
 
-I recommend visiting the Alchemistry website if you are unfamiliar with free
-energy calculations. [This
+I recommend visiting the [Alchemistry](http://alchemistry.org) website if you
+are unfamiliar with free energy calculations. [This
 page](http://www.alchemistry.org/wiki/Example:_Solvation_of_OPLS-AA_Ethanol_in_TIP3P_Water)
 in particular is relevant. This tutorial follows the direct calculation. State A
 for us is a methane fully interacting in water. State B will be amethane with all
