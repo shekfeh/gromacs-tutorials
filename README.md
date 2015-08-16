@@ -7,7 +7,7 @@ tutorials are essential before going on to the others, as the structure file
 used in all subsequent tutorials. The tutorials are designed for GROMACS version
 5.1. If you are using an older version, some of the commands or parameters may
 have changed. Note especially that the pull code for umbrella sampling has
-changed since 5.0, and especially any 4.x release.
+changed since 5.0 and older releases.
 
 I assume you have some working knowledge of the command line. Specifically, you
 should know how to make directories, change into them, and edit text files.
