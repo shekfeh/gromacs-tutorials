@@ -14,15 +14,15 @@ Throughout the tutorials we'll be using OPLS methane and TIP4PEW water.
 
 ##Contents
 
-1. [Water](1_tip4pew_water/README.md) - Basics of setting up a simulation. Find out the
+1. [Water](https://github.com/wesbarnett/gromacs-tutorials/blob/master/1_tip4pew_water/README.md) - Basics of setting up a simulation. Find out the
    density of TIP4PEW water.
-2. [One methane in water](2_methane_in_water/README.md) - How to create a topology file
+2. [One methane in water](https://github.com/wesbarnett/gromacs-tutorials/blob/master/2_methane_in_water/README.md) - How to create a topology file
    for a molecule and solvate it. Get the radial distribution function.
-3. [Several methanes in water](3_methanes_in_water/README.md) - How to put multiple
+3. [Several methanes in water](https://github.com/wesbarnett/gromacs-tutorials/blob/master/3_methanes_in_water/README.md) - How to put multiple
    solutes into a system. Get the methane-methane potential of mean force.
-4. [Free energy of solvation of methane](4_methane_fe/README.md) - How to do a free energy
+4. [Free energy of solvation of methane](https://github.com/wesbarnett/gromacs-tutorials/blob/master/4_methane_fe/README.md) - How to do a free energy
    simulation when coupling a molecule. Use MBAR to get the result.
-5. [Umbrella sampling](5_umbrella/README.md) - Get methane-methane PMF from umbrella sampling using pull
+5. [Umbrella sampling](https://github.com/wesbarnett/gromacs-tutorials/blob/master/5_umbrella/README.md) - Get methane-methane PMF from umbrella sampling using pull
    code.
 
 ## Links
