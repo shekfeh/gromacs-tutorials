@@ -36,13 +36,13 @@ water. We'll use a dodecahedron box at 1.2 nm out in each direction from the
 methane. First create the box:
 
 ```bash
-gmx editconf -f methane.pdb -bt dodec -d 1.2 -o box.gro
+$ gmx editconf -f methane.pdb -bt dodec -d 1.2 -o box.gro
 ```
 
 Now fill with solvent:
 
 ```bash
-gmx solvate -cs tip4p -cp box.gro -o conf.gro -p topol.top
+$ gmx solvate -cs tip4p -cp box.gro -o conf.gro -p topol.top
 ```
 
 ### Parameter files
@@ -58,11 +58,11 @@ then do a production run for 5 ns.
 
 The files can be downloaded here:
 
-* [Minimization](mdp/min.mdp)
-* [Minimization 2](mdp/min2.mdp)
-* [Equilibration](mdp/eql.mdp)
-* [Equilibration 2](mdp/eql2.mdp)
-* [Production](mdp/prd.mdp)
+* [Minimization](https://raw.githubusercontent.com/wesbarnett/gromacs-tutorials/master/4_methane_fe/mdp/min.mdp)
+* [Minimization 2](https://raw.githubusercontent.com/wesbarnett/gromacs-tutorials/master/4_methane_fe/mdp/min2.mdp)
+* [Equilibration](https://raw.githubusercontent.com/wesbarnett/gromacs-tutorials/master/4_methane_fe/mdp/eql.mdp)
+* [Equilibration 2](https://raw.githubusercontent.com/wesbarnett/gromacs-tutorials/master/4_methane_fe/mdp/eql2.mdp)
+* [Production](https://raw.githubusercontent.com/wesbarnett/gromacs-tutorials/master/4_methane_fe/mdp/prd.mdp)
 
 Here's an explanation of some of these new values:
 
@@ -140,8 +140,8 @@ Put the above in a script named `run`. The script assumes you have downloaded
 and placed the mdp files in a subdirectory named `mdp`. Then do:
 
 ```bash
-chmod +x run
-./run
+$ chmod +x run
+$ ./run
 ```
 
 Analysis
@@ -156,7 +156,7 @@ After downloading and installing the script, run it in the directory with the
 results:
 
 ```bash
-alchemical_analysis -p prd. -u kcal
+$ alchemical_analysis -p prd. -u kcal
 ```
 
 Your output should look something like this:

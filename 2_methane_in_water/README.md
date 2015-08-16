@@ -20,7 +20,7 @@ or something similar).
 If you're unsure where your GROMACS installation is do:
 
 ```bash
-echo $GMXPREFIX
+$ echo $GMXPREFIX
 ```
 
 If you are properly sourcing the GROMACS configuration file, this will give you
@@ -31,8 +31,8 @@ you can simply go to `$GMXDATA/top`.
 Let's take a look at the force field directory's its contents:
 
 ```bash
-cd oplsaa.ff
-ls
+$ cd oplsaa.ff
+$ ls
 ```
 
 You'll see several files, but we're only interested in a few of them for now.
@@ -46,7 +46,7 @@ recognized residues used for the *gmx pdb2gmx* command.
 Open `atomtypes.atp` with your text editor. The following opens it with `vim`:
 
 ```bash
-vim atomtypes.atp
+$ vim atomtypes.atp
 ```
 
 Go to the line with `opls_138`. Notice the comment says `alkane CH4`, so we are
@@ -62,8 +62,8 @@ at in a minute. Now make a note of these two atom types and close the file.
 Let's take a look at `ffnonbonded.itp` for these two atom types:
 
 ```bash
-grep opls_138 ffnonbonded.itp
-grep opls_140 ffnonbonded.itp
+$ grep opls_138 ffnonbonded.itp
+$ grep opls_140 ffnonbonded.itp
 ```
 
 Here we see the name of the atom type, the bond type, the mass, the charge,
@@ -76,19 +76,19 @@ directory somewhere, like your home directory, since we'll be modifying it and
 adding some files. To copy it to your home directory do:: 
 
 ```bash
-cp -r $GMXDATA/top $HOME/GMXLIB
+$ cp -r $GMXDATA/top $HOME/GMXLIB
 ```
 
 You might have to be root to do it. Now change the `$GMXLIB` environmental variable to:
 
 ```bash
-export GMXLIB=$HOME/GMXLIB
+$ export GMXLIB=$HOME/GMXLIB
 ```
 
 Add the above to your `.bash_profile` to make it permanent. Now do:
 
 ```bash
-cd $GMXLIB
+$ cd $GMXLIB
 ```
 
 You are now in the copy of the director you made, and all simulations will use
@@ -161,7 +161,7 @@ Save the file as `methane.pdb`.
 Now we can use *gmx pdb2gmx* to create GROMACS .conf and .top files:
 
 ```bash
-gmx pdb2gmx -f methane.pdb
+$ gmx pdb2gmx -f methane.pdb
 ```
 
 You'll be prompted to choose a force field. Choose OPLS. If you have an option
@@ -190,7 +190,7 @@ Our structure file and topology file only have our methane thus far. We need to
 add waters by using *gmx solvate*:
 
 ```bash
-gmx solvate -cp conf.gro -o conf.gro -cs tip4p -p topol.top -box 2.3 2.3 2.3
+$ gmx solvate -cp conf.gro -o conf.gro -cs tip4p -p topol.top -box 2.3 2.3 2.3
 ```
 
 ### Parameter files
@@ -210,20 +210,16 @@ We'll be using the same sequence as last time. This assumes your mdp files are
 in a directory named `mdp`:
 
 ```bash
-gmx grompp -f mdp/min.mdp -o min -pp min -po min
-gmx mdrun -deffnm min
-
-gmx grompp -f mdp/min2.mdp -o min2 -pp min2 -po min2 -c min -t min -maxwarn 1
-gmx mdrun -deffnm min2
-
-gmx grompp -f mdp/eql.mdp -o eql -pp eql -po eql -c min2 -t min2
-gmx mdrun -deffnm eql
-
-gmx grompp -f mdp/eql2.mdp -o eql2 -pp eql2 -po eql2 -c eql -t eql
-gmx mdrun -deffnm eql2
-
-gmx grompp -f mdp/prd.mdp -o prd -pp prd -po prd -c eql2 -t eql2
-gmx mdrun -deffnm prd
+$ gmx grompp -f mdp/min.mdp -o min -pp min -po min
+$ gmx mdrun -deffnm min
+$ gmx grompp -f mdp/min2.mdp -o min2 -pp min2 -po min2 -c min -t min -maxwarn 1
+$ gmx mdrun -deffnm min2
+$ gmx grompp -f mdp/eql.mdp -o eql -pp eql -po eql -c min2 -t min2
+$ gmx mdrun -deffnm eql
+$ gmx grompp -f mdp/eql2.mdp -o eql2 -pp eql2 -po eql2 -c eql -t eql
+$ gmx mdrun -deffnm eql2
+$ gmx grompp -f mdp/prd.mdp -o prd -pp prd -po prd -c eql2 -t eql2
+$ gmx mdrun -deffnm prd
 ```
 
 _Tip:_ You may want to put the above commands in a bash script called `run`. Add
@@ -238,13 +234,13 @@ set -e
 Then do:
 
 ```bash
-chmod +x run
+$ chmod +x run
 ```
 
 To run the script do:
 
 ```bash
-./run
+$ ./run
 ```
 
 Your script should look [like this](run). `set -e` tells bash to stop the script
@@ -258,21 +254,18 @@ function](https://en.wikipedia.org/wiki/Radial_distribution_function). First, we
 need to create an index file:
 
 ```bash
-gmx make_ndx -f conf.gro
+$ gmx make_ndx -f conf.gro
 ```
-
-At the prompt do:
-
 ```
-a C
-a OW
-q
+> a C
+> a OW
+> q
 ```
 
 Now run *gmx rdf*:
 
 ```bash
-gmx rdf -f prd.xtc -n index.ndx
+$ gmx rdf -f prd.xtc -n index.ndx
 ```
 
 At the prompt select `C` for the reference group. Then select `OW`. A plot of
