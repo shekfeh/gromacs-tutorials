@@ -28,6 +28,8 @@ Once again we'll be reusing `methane.pdb` and `topol.top` from our previous
 tutorials. Insert two methanes into a box using *gmx insert-molecules* and then
 solvate the box using *gmx solvate*. 
 
+### Create index file
+
 We also need to create an index file with the two groups we are interested in
 restraining with our umbrella potential. Create an index file using *gmx index*
 creating a group containing just one carbon from one of the methanes and name
@@ -81,7 +83,7 @@ Here's an explanation of the new parameters that are used in each file:
 |  parameter     | value     | explanation |
 | ---------------|-----------|-------------| 
 |  pull               | umbrella  | Use an umbrella (harmonic) potential between the groups specified.|
-|  pull-geometry      | distance  | We're going to pull along the vector connecting our two groups |
+|  pull-geometry      | distance  | We're going to pull along the vector connecting our two groups. |
 |  pull-start         | no        | We're manually specifying the distance for each window, so we do not want to add the center of mass distance to the calculation. |
 |  pull-ngroups       | 2         | We have two groups that we're pulling.  |
 |  pull-coord1-groups | 1 2       | For this pull coordinate these are the two groups (defined below) which will be pulled. You can actually have more thane one pull coordinate and so do pulling across different sets of molecules, but that's not applicable here. |
