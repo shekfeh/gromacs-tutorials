@@ -62,12 +62,12 @@ parameters.
 
 To create a box of water using that structure file do:
 
-	gmx solvate -cs tip4p -o conf.gro -box 3.5 3.5 3.5 -p topol.top
+	gmx solvate -cs tip4p -o conf.gro -box 2.5 2.5 2.5 -p topol.top
 
 If you open back up `topol.top` you'll see that a line has been added at the
 end with the word `SOL` and number. `SOL` is the name of the `moleculetype` that
 is defined in `oplsaa.ff/tip4pew.itp`. When we ran _gmx solvate_, GROMACS added
-enough water molecules to fill a box 3.5 nm in each direction.
+enough water molecules to fill a box 2.5 nm in each direction.
 
 ### Parameter files
 
@@ -80,11 +80,11 @@ production run.
 
 Here are the files we'll be using:
 
-* [Minimization](mdp/min.mdp)
-* [Minimization 2](mdp/min2.mdp)
-* [Equilibration](mdp/eql.mdp)
-* [Equilibration 2](mdp/eql2.mdp)
-* [Production](mdp/prd.mdp)
+* [Minimization](https://raw.githubusercontent.com/wesbarnett/gromacs-tutorials/master/1_tip4pew_water/mdp/min.mdp)
+* [Minimization 2](https://raw.githubusercontent.com/wesbarnett/gromacs-tutorials/master/1_tip4pew_water/mdp/min2.mdp)
+* [Equilibration](https://raw.githubusercontent.com/wesbarnett/gromacs-tutorials/master/1_tip4pew_water/mdp/eql.mdp)
+* [Equilibration 2](https://raw.githubusercontent.com/wesbarnett/gromacs-tutorials/master/1_tip4pew_water/mdp/eql2.mdp)
+* [Production](https://raw.githubusercontent.com/wesbarnett/gromacs-tutorials/master/1_tip4pew_water/mdp/prd.mdp)
 
 Create a folder in your project directory named `mdp` and download and store
 the files there.
