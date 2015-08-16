@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>GROMACS Tutorials by wesbarnett</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-dark.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/wesbarnett/gromacs-tutorials">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/wesbarnett/gromacs-tutorials/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/wesbarnett/gromacs-tutorials/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>GROMACS Tutorials</h1>
+          <p>Some GROMACS tutorials using methane and water</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/wesbarnett">wesbarnett</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>
+<a id="gromacs-tutorials" class="anchor" href="#gromacs-tutorials" aria-hidden="true"><span class="octicon octicon-link"></span></a>GROMACS Tutorials</h1>
+
+<p>Some <a href="http://www.gromacs.org">GROMACS</a> tutorials for beginners. It's not
+necessary to do the tutorials in order, but the first two
+tutorials are essential before going on to the others, as the structure file
+(<code>methane.pdb</code>) and topology file (<code>topol.top</code>) for methane from tutorial 2 are
+used in all subsequent tutorials.</p>
+
+<p>I assume you have some working knowledge of the command line. Specifically, you
+should know how to make directories, change into them, and edit text files.
+Obviously I also assume you have GROMACS installed on a machine available to you.</p>
+
+<p>Throughout the tutorials we'll be using OPLS methane and TIP4PEW water.</p>
+
+<h2>
+<a id="contents" class="anchor" href="#contents" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contents</h2>
+
+<ol>
+<li>
+<a href="1_tip4pew_water/README.md">Water</a> - Basics of setting up a simulation. Find out the
+density of TIP4PEW water.</li>
+<li>
+<a href="2_methane_in_water/README.md">One methane in water</a> - How to create a topology file
+for a molecule and solvate it. Get the radial distribution function.</li>
+<li>
+<a href="3_methanes_in_water/README.md">Several methanes in water</a> - How to put multiple
+solutes into a system. Get the methane-methane potential of mean force.</li>
+<li>
+<a href="4_methane_fe/README.md">Free energy of solvation of methane</a> - How to do a free energy
+simulation when coupling a molecule. Use MBAR to get the result.</li>
+<li>
+<a href="5_umbrella/README.md">Umbrella sampling</a> - Get methane-methane PMF from umbrella sampling using pull
+code.</li>
+</ol>
+
+<h2>
+<a id="links" class="anchor" href="#links" aria-hidden="true"><span class="octicon octicon-link"></span></a>Links</h2>
+
+<p>Some of the other software that I use in these tutorials that you may find
+useful are:</p>
+
+<ul>
+<li><a href="https://github.com/MobleyLab/alchemical-analysis">alchemical-analysis</a></li>
+<li><a href="http://avogadro.cc/wiki/Main_Page">Avogadro</a></li>
+<li><a href="http://www.gnuplot.info/">gnuplot</a></li>
+<li><a href="http://www.ks.uiuc.edu/Research/vmd/">vmd</a></li>
+</ul>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
