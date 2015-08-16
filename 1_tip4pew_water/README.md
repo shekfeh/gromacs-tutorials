@@ -53,7 +53,8 @@ Molecules ]`. Right now we don't have any (we'll get those in a minute).
 
 The structure of TIP4PEW is already provided by GROMACS in the topology
 directory. This standard location is typically `/usr/share/gromacs/top`, but you
-my have it installed in a different directory. In that directory you'll see
+my have it installed in a different directory. If you are properly sourcing
+GMXRC then it will be located at `$GMXDATA/top`. In that directory you'll see
 several `.gro` files, one of which is `tip4p.gro`. You'll also see the folder
 `oplsaa.ff` which we've included in our topology file above. There isn't a
 structure file specific to TIP4PEW. Four-point water structure is essentially
@@ -63,7 +64,7 @@ parameters.
 To create a box of water using that structure file do:
 
 ```bash	
-gmx solvate -cs tip4p -o conf.gro -box 2.3 2.3 2.3 -p topol.top
+$ gmx solvate -cs tip4p -o conf.gro -box 2.3 2.3 2.3 -p topol.top
 ```
 
 If you open back up `topol.top` you'll see that a line has been added at the
@@ -187,11 +188,11 @@ topology file).
 First, let's run our two minimization steps by doing the following:
 
 ```bash	
-gmx grompp -f mdp/min.mdp -o min -pp min -po min
-gmx mdrun -deffnm min
+$ gmx grompp -f mdp/min.mdp -o min -pp min -po min
+$ gmx mdrun -deffnm min
 
-gmx grompp -f mdp/min2.mdp -o min2 -pp min2 -po min2 -c min -t min -maxwarn 1
-gmx mdrun -deffnm min2
+$ gmx grompp -f mdp/min2.mdp -o min2 -pp min2 -po min2 -c min -t min -maxwarn 1
+$ gmx mdrun -deffnm min2
 ```
 	
 At each part we are reading in the .mdp file with the `-f` flag. By default if
@@ -216,13 +217,13 @@ these parts using the GROMACS command *gmx energy*. Do the following and enter
 the number that corresponds with `Potential`, followed by enter again:
 
 ```bash	
-gmx energy -f min.edr -o min-energy.xvg
+$ gmx energy -f min.edr -o min-energy.xvg
 ```
 
 Now do the same for the second minimization:
 
 ```bash	
-gmx energy -f min2.edr -o min2-energy.xvg
+$ gmx energy -f min2.edr -o min2-energy.xvg
 ```
 
 The header of the resulting `.xvg.` file will contain information for use with
@@ -231,19 +232,19 @@ errors. I just simply replace every `@` character with `#` in the `.xvg.` file
 and then I can use gnuplot. To plot with first start gnuplot:
 
 ```bash	
-gnuplot
+$ gnuplot
 ```
 
 Then in the gnuplot terminal do:
 
 ```gnuplot
-plot 'min-energy.xvg' w l
+> plot 'min-energy.xvg' w l
 ```
 
 To plot the second minimization step do:
 
 ```gnuplot
-plot 'min2-energy.xvg' w l
+> plot 'min2-energy.xvg' w l
 ```
 
 Your plots should looks something like this:
@@ -258,14 +259,14 @@ Now that we have a good starting structure, let's do the first equilibration
 step, by adding the temperature coupling:
 
 ```bash	
-gmx grompp -f mdp/eql.mdp -o eql -pp eql -po eql -c min2 -t min2
-gmx mdrun -deffnm eql
+$ gmx grompp -f mdp/eql.mdp -o eql -pp eql -po eql -c min2 -t min2
+$ gmx mdrun -deffnm eql
 ```
 
 Let's take a look at how the temperature varies throughout the simulation:
 
 ```bash	
-gmx energy -f eql.edr -o eql-temp.xvg 
+$ gmx energy -f eql.edr -o eql-temp.xvg 
 ```
 
 Choose the number corresponding to `Temperature` at the prompt and hit enter
@@ -281,8 +282,8 @@ settles.
 For our last equilibration, as stated earlier, we're adding a pressure coupling:
 
 ```bash	
-gmx grompp -f mdp/eql2.mdp -o eql2 -pp eql2 -po eql2 -c eql -t eql
-gmx mdrun -deffnm eql2
+$ gmx grompp -f mdp/eql2.mdp -o eql2 -pp eql2 -po eql2 -c eql -t eql
+$ gmx mdrun -deffnm eql2
 ```
 
 You can check out the temperature and pressure using *gmx energy* as above.
@@ -298,8 +299,8 @@ full equilibration should be close to 1 bar in this case.
 Now for the production part do:
 
 ```bash
-gmx grompp -f mdp/prd.mdp -o prd -pp prd -po prd -c eql2 -t eql2
-gmx mdrun -deffnm prd
+$ gmx grompp -f mdp/prd.mdp -o prd -pp prd -po prd -c eql2 -t eql2
+$ gmx mdrun -deffnm prd
 ```
 
 Analysis
@@ -327,7 +328,7 @@ You can also visualize your simulation using a program like
 vmd do:
 
 ```bash
-vmd prd.gro prd.xtc
+$ vmd prd.gro prd.xtc
 ```
 
 Here's a snapshot:
@@ -339,7 +340,7 @@ with bonds stretching across the box. You can make molecules whole by using *gmx
 trjconv*:
 
 ```bash
-gmx trjconv -f prd.xtc -s prd.tpr -pbc mol -o prd-mol.xtc
+$ gmx trjconv -f prd.xtc -s prd.tpr -pbc mol -o prd-mol.xtc
 ```
 
 Viewing that file should look much nicer:

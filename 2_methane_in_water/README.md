@@ -24,8 +24,9 @@ echo $GMXPREFIX
 ```
 
 If you are properly sourcing the GROMACS configuration file, this will give you
-the installation location. Look for the directory `top` in that directory and go
-into it.
+the installation location. Look for the directory `share/gromacs/top` in that directory and go
+into it (*e.g.,* if GMXPREFIX is `/usr` then go to `/usr/share/gromacs/top`). Or
+you can simply go to `$GMXDATA/top`.
 
 Let's take a look at the force field directory's its contents:
 
@@ -72,10 +73,10 @@ for the bond types, angle types, and dihedral types.
 
 Before continuing, you may want to copy your top-level force field directory
 directory somewhere, like your home directory, since we'll be modifying it and
-adding some files. To copy it to your home directory do: 
+adding some files. To copy it to your home directory do:: 
 
 ```bash
-cp -r /usr/share/gromacs/top $HOME/GMXLIB
+cp -r $GMXDATA/top $HOME/GMXLIB
 ```
 
 You might have to be root to do it. Now change the `$GMXLIB` environmental variable to:
@@ -125,7 +126,7 @@ you want, as long as they match the pdb file we are going to create later.
 Notice in the first column we gave the atom names, then we gave the atom types,
 the charges, and then the charge group. Under `[ bonds ]` we just tell it how
 each atom is connected to the others. In this case, `C` has a connection to each
-hydrogen. We could optionally add `[ angles ]`, but as stated earlier, Gromacs
+hydrogen. We could optionally add `[ angles ]`, but as stated earlier, GROMACS
 will sort this out for us. Now close the file. See section 5.6 for more
 information about this.
 
@@ -163,14 +164,19 @@ Now we can use *gmx pdb2gmx* to create GROMACS .conf and .top files:
 gmx pdb2gmx -f methane.pdb
 ```
 
-You'll be prompted to choose a force field. Choose OPLS. For the water model
-choose TIP4PEW. Three files will be created: `conf.gro`, `posre.itp`,
+You'll be prompted to choose a force field. Choose OPLS. If you have an option
+between two different force field directories, choose the OPLS that is in the
+copied directory you made. For the water model choose TIP4PEW. If you get an
+error that GROMACS cannot find residue `CH4` you may beusing the wrong force
+field.
+
+Three files will be created: `conf.gro`, `posre.itp`,
 and `topol.top`. `conf.gro` is our file containing just one methane, topol.top
 is the system's topology file, and posre.itp is the optional position restraint
 file for our solute (methane). We won't be using that one. In the `topol.top`
 file notice that there is an `[ angles ]` section as promised. You'll also want
 to rename the compound in `topol.top`.  Take a look and explore each file.
-Chapter 5 of the Gromacs manual will help you understand the topology file more.
+Chapter 5 of the GROMACS manual will help you understand the topology file more.
 
 _**Note:** `topol.top` and `methane.pdb` will be used again in other tutorials._
 
@@ -184,7 +190,7 @@ Our structure file and topology file only have our methane thus far. We need to
 add waters by using *gmx solvate*:
 
 ```bash
-gmx solvate -cp conf.gro -o conf.gro -cs tip4p -p topol.top -box 3.5 3.5 3.5
+gmx solvate -cp conf.gro -o conf.gro -cs tip4p -p topol.top -box 2.3 2.3 2.3
 ```
 
 ### Parameter files
