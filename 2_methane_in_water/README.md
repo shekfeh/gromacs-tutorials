@@ -173,11 +173,11 @@ add waters by using *gmx solvate*:
 
 We'll be using the same files as in the previous tutorial:
 
-* [Minimization](../1_tip4pew_water/mdp/min.mdp)
-* [Minimization 2](../1_tip4pew_water/mdp/min2.mdp)
-* [Equilibration](../1_tip4pew_water/mdp/eql.mdp)
-* [Equilibration 2](../1_tip4pew_water/mdp/eql2.mdp)
-* [Production](../1_tip4pew_water/mdp/prd.mdp)
+* [Minimization](https://raw.githubusercontent.com/wesbarnett/gromacs-tutorials/master/1_tip4pew_water/mdp/min.mdp)
+* [Minimization 2](https://raw.githubusercontent.com/wesbarnett/gromacs-tutorials/master/1_tip4pew_water/mdp/min2.mdp)
+* [Equilibration](https://raw.githubusercontent.com/wesbarnett/gromacs-tutorials/master/1_tip4pew_water/mdp/eql.mdp)
+* [Equilibration 2](https://raw.githubusercontent.com/wesbarnett/gromacs-tutorials/master/1_tip4pew_water/mdp/eql2.mdp)
+* [Production](https://raw.githubusercontent.com/wesbarnett/gromacs-tutorials/master/1_tip4pew_water/mdp/prd.mdp)
 
 Simulation
 ----------

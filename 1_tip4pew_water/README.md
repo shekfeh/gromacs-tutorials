@@ -62,7 +62,9 @@ parameters.
 
 To create a box of water using that structure file do:
 
-	gmx solvate -cs tip4p -o conf.gro -box 2.3 2.3 2.3 -p topol.top
+```bash	
+gmx solvate -cs tip4p -o conf.gro -box 2.3 2.3 2.3 -p topol.top
+```
 
 If you open back up `topol.top` you'll see that a line has been added at the
 end with the word `SOL` and number. `SOL` is the name of the `moleculetype` that
