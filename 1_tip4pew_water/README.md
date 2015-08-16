@@ -247,10 +247,11 @@ To plot the second minimization step do:
 > plot 'min2-energy.xvg' w l
 ```
 
-Your plots should looks something like this:
+Your first plot should look something like this:
 
 ![Minimization Potential](min-pot.png)
-![Minimization2 Potential](min2-pot.png)
+
+My second minimization didn't change anything, so I have nothing to plot.
 
 
 ### Equilibration 1 (NVT)
