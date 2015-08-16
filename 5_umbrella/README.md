@@ -35,23 +35,31 @@ restraining with our umbrella potential. Create an index file using *gmx index*
 creating a group containing just one carbon from one of the methanes and name
 them `CA` and `CB` respectively.
 
-	gmx make_ndx -f conf.gro
+```bash
+gmx make_ndx -f conf.gro
+```
 
 Then, assuming the residue `CH4` is in group 2:
 
-	splitres 2
+```
+splitres 2
+```
 	
 Now I assume the last two groups are 6 and 7 which are the two methane
 molecules:
 	
-	6 & a C
-	7 & a C
+```
+6 & a C
+7 & a C
+```
 
 Now name the groups:
 
-	name 8 CA
-	name 9 CB
-	q
+```bash
+name 8 CA
+name 9 CB
+q
+```
 	
 There are other ways to get to the same place with *gmx make_ndx*. The point is,
 you need to get each methane carbon in its own index group and name them `CA`
@@ -67,11 +75,11 @@ each distance we want for the two methanes.
 
 The parameter files for each step are found here:
 
-* [Minimization](mdp/min.mdp)
-* [Minimization 2](mdp/min2.mdp)
-* [Equilibration](mdp/eql.mdp)
-* [Equilibration 2](mdp/eql2.mdp)
-* [Production](mdp/prd.mdp)
+* [Minimization](https://github.com/wesbarnett/gromacs-tutorials/blob/master/5_umbrella/mdp/min.mdp)
+* [Minimization 2](https://github.com/wesbarnett/gromacs-tutorials/blob/master/5_umbrella/mdp/min2.mdp)
+* [Equilibration](https://github.com/wesbarnett/gromacs-tutorials/blob/master/5_umbrella/mdp/eql.mdp)
+* [Equilibration 2](https://github.com/wesbarnett/gromacs-tutorials/blob/master/5_umbrella/mdp/eql2.mdp)
+* [Production](https://github.com/wesbarnett/gromacs-tutorials/blob/master/5_umbrella/mdp/prd.mdp)
 
 Just like in the free energy tutorial, these files are templates with a keyword
 that will be replaced in a bash script. This is because we have to run a full
@@ -106,34 +114,36 @@ For the simulations we're going to use a bash script to replace the `WINDOW`
 keyword in our mdp files, very similar to what we did in the free energy
 simulation. Here is the script:
 
-	#!/bin/bash
-	set -e
+```bash
+#!/bin/bash
+set -e
 
-	for ((i=0;i<27;i++)); do
+for ((i=0;i<27;i++)); do
 
-		x=$(echo "0.05*$(($i+1))" | bc);
+	x=$(echo "0.05*$(($i+1))" | bc);
 
-		sed 's/WINDOW/'$x'/g' mdp/min.mdp > grompp.mdp
-		gmx grompp -o min.$i -pp min.$i -po min.$i -n index.ndx
-		gmx mdrun -deffnm min.$i -pf pullf-min.$i -px pullx-min.$i 
+	sed 's/WINDOW/'$x'/g' mdp/min.mdp > grompp.mdp
+	gmx grompp -o min.$i -pp min.$i -po min.$i -n index.ndx
+	gmx mdrun -deffnm min.$i -pf pullf-min.$i -px pullx-min.$i 
 
-		sed 's/WINDOW/'$x'/g' mdp/min2.mdp > grompp.mdp
-		gmx grompp -o min2.$i -c min.$i -t min.$i -pp min2.$i -po min2.$i -maxwarn 1 -n index.ndx
-		gmx mdrun -deffnm min2.$i -pf pullf-min2.$i -px pullx-min2.$i 
+	sed 's/WINDOW/'$x'/g' mdp/min2.mdp > grompp.mdp
+	gmx grompp -o min2.$i -c min.$i -t min.$i -pp min2.$i -po min2.$i -maxwarn 1 -n index.ndx
+	gmx mdrun -deffnm min2.$i -pf pullf-min2.$i -px pullx-min2.$i 
 
-		sed 's/WINDOW/'$x'/g' mdp/eql.mdp > grompp.mdp
-		gmx grompp -o eql.$i -c min2.$i -t min2.$i -pp eql.$i -po eql.$i -n index.ndx
-		gmx mdrun -deffnm eql.$i -pf pullf-eql.$i -px pullx-eql.$i 
+	sed 's/WINDOW/'$x'/g' mdp/eql.mdp > grompp.mdp
+	gmx grompp -o eql.$i -c min2.$i -t min2.$i -pp eql.$i -po eql.$i -n index.ndx
+	gmx mdrun -deffnm eql.$i -pf pullf-eql.$i -px pullx-eql.$i 
 
-		sed 's/WINDOW/'$x'/g' mdp/eql2.mdp > grompp.mdp
-		gmx grompp -o eql2.$i -c eql.$i -t eql.$i -pp eql2.$i -po eql2.$i -n index.ndx
-		gmx mdrun -deffnm eql2.$i -pf pullf-eql2.$i -px pullx-eql2.$i 
+	sed 's/WINDOW/'$x'/g' mdp/eql2.mdp > grompp.mdp
+	gmx grompp -o eql2.$i -c eql.$i -t eql.$i -pp eql2.$i -po eql2.$i -n index.ndx
+	gmx mdrun -deffnm eql2.$i -pf pullf-eql2.$i -px pullx-eql2.$i 
 
-		sed 's/WINDOW/'$x'/g' mdp/prd.mdp > grompp.mdp
-		gmx grompp -o prd.$i -c eql2.$i -t eql2.$i -pp prd.$i -po prd.$i -n index.ndx
-		gmx mdrun -deffnm prd.$i -pf pullf-prd.$i -px pullx-prd.$i
+	sed 's/WINDOW/'$x'/g' mdp/prd.mdp > grompp.mdp
+	gmx grompp -o prd.$i -c eql2.$i -t eql2.$i -pp prd.$i -po prd.$i -n index.ndx
+	gmx mdrun -deffnm prd.$i -pf pullf-prd.$i -px pullx-prd.$i
 
-	done
+done
+```
 
 We are simulating 26 windows from 0.05 to around 1.3 nm in distance. Notice that
 I've added `-pf` and `-px` flags for the pull force and pull distance for each
@@ -151,12 +161,16 @@ containing a list of the `.tpr` files and another file containing a list of the
 
 To create these two files do:
 
-	ls prd.*.tpr > tpr.dat
-	ls pullf-prd.*.xvg > pullf.dat
+```bash
+ls prd.*.tpr > tpr.dat
+ls pullf-prd.*.xvg > pullf.dat
+```
 
 Then you can run *gmx wham*:
 
-	gmx wham -it tpr.dat -f pullf.dat -zprof0 1.0
+```bash
+gmx wham -it tpr.dat -f pullf.dat -zprof0 1.0
+```
 
 Using `-zprof0` we are telling GROMACS we want the potential to be zero at 1.0
 nm. This is reasonable for this system, since 1.0 is the cutoff for both our VDW
@@ -171,7 +185,9 @@ We would expect the interaction to go to zero at longer distances. We are
 missing a correction of 2kTln(w) that needs to be added. To plot this in gnuplot
 do the following in a gnuplot terminal:
 
-	plot 'profile.xvg' u 1:($2+2*8.314e-3*298.15*log($1)) w l
+```gnuplot
+plot 'profile.xvg' u 1:($2+2*8.314e-3*298.15*log($1)) w l
+```
 
 Your PMF should now look like this:
 

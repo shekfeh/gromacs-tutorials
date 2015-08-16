@@ -19,13 +19,17 @@ nm.
 
 First, insert ten methanes into a 3.2 nm x 3.2 nm x 3.2 nm box:
 
-	gmx insert-molecules -ci methane.pdb -o box.gro -nmol 10 -box 3.2 3.2 3.2
+```bash
+gmx insert-molecules -ci methane.pdb -o box.gro -nmol 10 -box 3.2 3.2 3.2
+```
 
 Update the line in `topol.top` containing the number of methanes from 1 to 10.
 
 Then add water to the box:
 
-	gmx solvate -cs tip4p -cp box.gro -o conf.gro -p topol.top -maxsol 1000
+```bash
+gmx solvate -cs tip4p -cp box.gro -o conf.gro -p topol.top -maxsol 1000
+```
 
 *gmx solvate* automatically updates `topol.top` for us.
 
@@ -43,10 +47,14 @@ Analysis
 
 Create an index file containing a group of the 10 methanes:
 
-	gmx make_ndx -f conf.gro
+```bash
+gmx make_ndx -f conf.gro
+```
 
-	a C
-	q
+```
+a C
+q
+```
 
 Now use *gmx rdf* just like last time, but instead choose the group containing
 `C` twice.
@@ -60,7 +68,9 @@ something like this if you just plot it normally:
 Note that it does not converge to one. We are overcounting by one, so we should
 factor that out. Here's the gnuplot command:
 
-	plot 'rdf.xvg' u 1:($2*10/9) w l
+```gnuplot
+plot 'rdf.xvg' u 1:($2*10/9) w l
+```
 
 We have ten methanes, but we should only be counting nine with the RDF, so we
 multiply the value of g by N/(N-1), which is 10/9. It should look like this:
@@ -73,7 +83,9 @@ methane-methane RDF we do w = -kTln(g).
 
 So to plot this with gnuplot do:
 
-	plot 'rdf.xvg' u 1:(-8.314e-3*298.15*log($2*10/9)) w l
+```gnuplot
+plot 'rdf.xvg' u 1:(-8.314e-3*298.15*log($2*10/9)) w l
+```
 
 Your plot should look something like this:
 

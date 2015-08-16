@@ -35,11 +35,15 @@ This time we're using a different box type so that we won't have to use as much
 water. We'll use a dodecahedron box at 1.2 nm out in each direction from the
 methane. First create the box:
 
-	gmx editconf -f methane.pdb -bt dodec -d 1.2 -o box.gro
+```bash
+gmx editconf -f methane.pdb -bt dodec -d 1.2 -o box.gro
+```
 
 Now fill with solvent:
 
-	gmx solvate -cs tip4p -cp box.gro -o conf.gro -p topol.top
+```bash
+gmx solvate -cs tip4p -cp box.gro -o conf.gro -p topol.top
+```
 
 ### Parameter files
 
@@ -90,37 +94,39 @@ As stated earlier we're actually running 15 simulations. To make this easier and
 in order to avoid having 15 different mdp files as inputs, use the following
 bash script to loop through and run each state:
 
-	#!/bin/bash
+```bash
+#!/bin/bash
 
-	set -e
+set -e
 
-	for ((i=0;i<15;i++)); do
+for ((i=0;i<15;i++)); do
 
-		sed 's/MYLAMBDA/'$i'/g' mdp/min.mdp > grompp.mdp
-		if [[ $i -eq 0 ]]; then
-			gmx grompp -o min.$i -pp min.$i -po min.$i
-		else
-			gmx grompp -c prd.$(($i-1)).gro -o min.$i -pp min.$i -po min.$i
-		fi
-		gmx mdrun -deffnm min.$i
+	sed 's/MYLAMBDA/'$i'/g' mdp/min.mdp > grompp.mdp
+	if [[ $i -eq 0 ]]; then
+		gmx grompp -o min.$i -pp min.$i -po min.$i
+	else
+		gmx grompp -c prd.$(($i-1)).gro -o min.$i -pp min.$i -po min.$i
+	fi
+	gmx mdrun -deffnm min.$i
 
-		sed 's/MYLAMBDA/'$i'/g' mdp/min2.mdp > grompp.mdp
-		gmx grompp -o min2.$i -c min.$i -t min.$i -pp min2.$i -po min2.$i -maxwarn 1
-		gmx mdrun -deffnm min2.$i
+	sed 's/MYLAMBDA/'$i'/g' mdp/min2.mdp > grompp.mdp
+	gmx grompp -o min2.$i -c min.$i -t min.$i -pp min2.$i -po min2.$i -maxwarn 1
+	gmx mdrun -deffnm min2.$i
 
-		sed 's/MYLAMBDA/'$i'/g' mdp/eql.mdp > grompp.mdp
-		gmx grompp -o eql.$i -c min2.$i -t min2.$i -pp eql.$i -po eql.$i
-		gmx mdrun -deffnm eql.$i 
+	sed 's/MYLAMBDA/'$i'/g' mdp/eql.mdp > grompp.mdp
+	gmx grompp -o eql.$i -c min2.$i -t min2.$i -pp eql.$i -po eql.$i
+	gmx mdrun -deffnm eql.$i 
 
-		sed 's/MYLAMBDA/'$i'/g' mdp/eql2.mdp > grompp.mdp
-		gmx grompp -o eql2.$i -c eql.$i -t eql.$i -pp eql2.$i -po eql2.$i
-		gmx mdrun -deffnm eql2.$i
+	sed 's/MYLAMBDA/'$i'/g' mdp/eql2.mdp > grompp.mdp
+	gmx grompp -o eql2.$i -c eql.$i -t eql.$i -pp eql2.$i -po eql2.$i
+	gmx mdrun -deffnm eql2.$i
 
-		sed 's/MYLAMBDA/'$i'/g' mdp/prd.mdp > grompp.mdp
-		gmx grompp -o prd.$i -c eql2.$i -t eql2.$i -pp prd.$i -po prd.$i
-		gmx mdrun -deffnm prd.$i
+	sed 's/MYLAMBDA/'$i'/g' mdp/prd.mdp > grompp.mdp
+	gmx grompp -o prd.$i -c eql2.$i -t eql2.$i -pp prd.$i -po prd.$i
+	gmx mdrun -deffnm prd.$i
 
-	done
+done
+```
 
 The script uses a for loop going from i=0 through i=14. In each iteration it
 uses `sed` to find and replace the keyword `MYLAMBDA` I placed in our mdp file
@@ -133,8 +139,10 @@ for methane decoupling, but it could possibly be beneficial in other systems.
 Put the above in a script named `run`. The script assumes you have downloaded
 and placed the mdp files in a subdirectory named `mdp`. Then do:
 
-	chmod +x run
-	./run
+```bash
+chmod +x run
+./run
+```
 
 Analysis
 --------
@@ -147,7 +155,9 @@ different methods with error analysis.
 After downloading and installing the script, run it in the directory with the
 results:
 
-	alchemical_analysis -p prd. -u kcal
+```bash
+alchemical_analysis -p prd. -u kcal
+```
 
 Your output should look something like this:
 
