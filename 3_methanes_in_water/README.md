@@ -1,3 +1,5 @@
+[Return to main page](https://wesbarnett.github.io/gromacs-tutorials/)
+
 Tutorial 3: Several Methanes in Water
 =====================================
 
@@ -100,3 +102,5 @@ except we did it a little longer. We again used *gmx rdf* to get the radial
 distribution function, but this time for methane-methane. We had a to add a
 correction due to this, and from there we were able to get the potential of mean
 force.
+
+[Return to main page](https://wesbarnett.github.io/gromacs-tutorials/)
