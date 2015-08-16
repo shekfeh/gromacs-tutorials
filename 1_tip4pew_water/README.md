@@ -141,9 +141,7 @@ several parameters shown below:
 |  parameter     | value       | explanation |
 | ---------------|-------------|-------------| 
 | gen-vel        | yes         | Generate velocities for each atomic site according to a Maxwell-Boltzmann distribution. **Only generate velocities for your first equilibration step**. This gets us close to the temperature at which we will couple the system.        |
-| gen-temp       | 298.15      |  Temperature in K to use for `gen-vel`. Unless
-you are doing some strange / interesting stuff, this should be the same as
-`ref-t`. |
+| gen-temp       | 298.15      |  Temperature in K to use for `gen-vel`. Unless you are doing some strange / interesting stuff, this should be the same as `ref-t`. |
 | tcoupl         | Nose-Hoover |  The algorithm to use for temperature coupling. Nose-Hoover correctly produces the canonical ensemble.       |
 | tc-grps        | System      | Which groups to couple. You can couple different groups of atoms separately, but we'll just couple the whole system. |
 | tau-t          | 2.0         | Time constant for coupling. See the manual for details. |
