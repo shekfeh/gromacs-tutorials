@@ -307,16 +307,16 @@ $ gmx mdrun -deffnm prd
 Analysis
 --------
 
-Using *gmx energy* as above, get the average temperature, pressure, and density.
-Are they what you expect?
+Using *gmx energy* as above on `prd.edr`, get the average temperature, pressure,
+and density.  Are they what you expect?
 
 Here's my output:
 
 	Energy                      Average   Err.Est.       RMSD  Tot-Drift
 	-------------------------------------------------------------------------------
-	Temperature                 298.152     0.0016    3.63648 0.00267146  (K)
-	Pressure                    1.13652      0.034     291.55  0.0616002  (bar)
-	Density                     995.063      0.011    5.49186 -0.0549838  (kg/m^3)
+	Temperature                 298.145      0.019    8.65629  0.0338992  (K)
+	Pressure                    3.25876       0.97    688.616   -2.75083  (bar)
+	Density                     995.381       0.15      12.92  0.0705576  (kg/m^3)
 
 If you look at the [TIP4PEW
 paper](http://link.aip.org/link/doi/10.1063/1.1683075) in figure 4, you can see
