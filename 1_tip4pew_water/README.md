@@ -52,7 +52,7 @@ Molecules ]`. Right now we don't have any (we'll get those in a minute).
 ### Structure file
 
 The structure of TIP4PEW is already provided by GROMACS in the topology
-directory. This standard location is typically `/usr/lib/gromacs/top`, but you
+directory. This standard location is typically `/usr/share/gromacs/top`, but you
 my have it installed in a different directory. In that directory you'll see
 several `.gro` files, one of which is `tip4p.gro`. You'll also see the folder
 `oplsaa.ff` which we've included in our topology file above. There isn't a

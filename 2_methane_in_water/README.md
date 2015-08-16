@@ -14,7 +14,7 @@ file.
 ### Setup residues for pdb2gmx
 
 For this molecule we'll be using the OPLS force field. The force field is
-located in the top-level force field directory (probably `/usr/lib/gromacs/top`
+located in the top-level force field directory (probably `/usr/share/gromacs/top`
 or something similar). 
 
 If you're unsure where your GROMACS installation is do:
@@ -66,7 +66,7 @@ Before continuing, you may want to copy your top-level force field directory
 directory somewhere, like your home directory, since we'll be modifying it and
 adding some files. To copy it to your home directory do: 
 
-	cp -r /usr/lib/gromacs/top $HOME/GMXLIB
+	cp -r /usr/share/gromacs/top $HOME/GMXLIB
 
 You might have to be root to do it. Now change the `$GMXLIB` environmental variable to:
 
