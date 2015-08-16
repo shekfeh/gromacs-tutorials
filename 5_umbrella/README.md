@@ -26,7 +26,8 @@ Setup
 
 Once again we'll be reusing `methane.pdb` and `topol.top` from our previous
 tutorials. Insert two methanes into a box using *gmx insert-molecules* and then
-solvate the box using *gmx solvate*. 
+solvate the box using *gmx solvate*. The box needs to be cubic and at least 3.1
+nm in each direction for this tutorial.
 
 ### Create index file
 
@@ -36,29 +37,29 @@ creating a group containing just one carbon from one of the methanes and name
 them `CA` and `CB` respectively.
 
 ```bash
-gmx make_ndx -f conf.gro
+$ gmx make_ndx -f conf.gro
 ```
 
 Then, assuming the residue `CH4` is in group 2:
 
 ```
-splitres 2
+> splitres 2
 ```
 	
 Now I assume the last two groups are 6 and 7 which are the two methane
 molecules:
 	
 ```
-6 & a C
-7 & a C
+> 6 & a C
+> 7 & a C
 ```
 
 Now name the groups:
 
 ```bash
-name 8 CA
-name 9 CB
-q
+> name 8 CA
+> name 9 CB
+> q
 ```
 	
 There are other ways to get to the same place with *gmx make_ndx*. The point is,
@@ -75,11 +76,11 @@ each distance we want for the two methanes.
 
 The parameter files for each step are found here:
 
-* [Minimization](https://github.com/wesbarnett/gromacs-tutorials/blob/master/5_umbrella/mdp/min.mdp)
-* [Minimization 2](https://github.com/wesbarnett/gromacs-tutorials/blob/master/5_umbrella/mdp/min2.mdp)
-* [Equilibration](https://github.com/wesbarnett/gromacs-tutorials/blob/master/5_umbrella/mdp/eql.mdp)
-* [Equilibration 2](https://github.com/wesbarnett/gromacs-tutorials/blob/master/5_umbrella/mdp/eql2.mdp)
-* [Production](https://github.com/wesbarnett/gromacs-tutorials/blob/master/5_umbrella/mdp/prd.mdp)
+* [Minimization](https://raw.githubusercontent.com/wesbarnett/gromacs-tutorials/master/5_umbrella/mdp/min.mdp)
+* [Minimization 2](https://raw.githubusercontent.com/wesbarnett/gromacs-tutorials/master/5_umbrella/mdp/min2.mdp)
+* [Equilibration](https://raw.githubusercontent.com/wesbarnett/gromacs-tutorials/master/5_umbrella/mdp/eql.mdp)
+* [Equilibration 2](https://raw.githubusercontent.com/wesbarnett/gromacs-tutorials/master/5_umbrella/mdp/eql2.mdp)
+* [Production](https://raw.githubusercontent.com/wesbarnett/gromacs-tutorials/master/5_umbrella/mdp/prd.mdp)
 
 Just like in the free energy tutorial, these files are templates with a keyword
 that will be replaced in a bash script. This is because we have to run a full
@@ -90,16 +91,18 @@ Here's an explanation of the new parameters that are used in each file:
 
 |  parameter     | value     | explanation |
 | ---------------|-----------|-------------| 
-|  pull               | umbrella  | Use an umbrella (harmonic) potential between the groups specified.|
-|  pull-geometry      | distance  | We're going to pull along the vector connecting our two groups. |
-|  pull-start         | no        | We're manually specifying the distance for each window, so we do not want to add the center of mass distance to the calculation. |
+|  pull          | yes | Use the pull code. |
 |  pull-ngroups       | 2         | We have two groups that we're pulling.  |
-|  pull-coord1-groups | 1 2       | For this pull coordinate these are the two groups (defined below) which will be pulled. You can actually have more thane one pull coordinate and so do pulling across different sets of molecules, but that's not applicable here. |
 |  pull-group1-name   | CA     | We specified this in the index file. For us this will be the carbon of one of the methanes, although we probably could have chosen the entire methane. If we did that it would have been pulled along the COM of the entire molecule. |
 |  pull-group2-name   | CB  | The carbon of the other methane. |
+|  pull-ncoords       |  1  | We are pulling along only one coordinate. |
+|  pull-coord1-geometry  | distance  | We're going to pull along the vector connecting our two groups. |
+| pull-coord1-type    |   umbrella | Use an umbrella (harmonic) potential for this coordinate.| 
+|  pull-coord1-groups | 1 2       | For this pull coordinate these are the two groups (defined below) which will be pulled. You can actually have more thane one pull coordinate and so do pulling across different sets of molecules, but that's not applicable here. |
 |  pull-coord1-k      | 5000.0  | The force constant used in the umbrella potential in kJ/(mol nm). |
 |  pull-coord1-init   | WINDOW  | This is the distance we want our two groups to be apart. I've put this keyword here that I'll replace in our bash script for each window |
 |  pull-coord1-rate   | 0.0    | We don't want the groups to move along the coordinate any, so this is 0. |
+|  pull-coord1-start         | no        | We're manually specifying the distance for each window, so we do not want to add the center of mass distance to the calculation. |
 
 The parameter files are setup for a 100 ps NVT equilbiration, then a 1 ns NPT
 equilibration, and lastly a 5 ns production run. We are planning on the methanes
@@ -162,14 +165,14 @@ containing a list of the `.tpr` files and another file containing a list of the
 To create these two files do:
 
 ```bash
-ls prd.*.tpr > tpr.dat
-ls pullf-prd.*.xvg > pullf.dat
+$ ls prd.*.tpr > tpr.dat
+$ ls pullf-prd.*.xvg > pullf.dat
 ```
 
 Then you can run *gmx wham*:
 
 ```bash
-gmx wham -it tpr.dat -f pullf.dat -zprof0 1.0
+$ gmx wham -it tpr.dat -f pullf.dat -zprof0 1.0
 ```
 
 Using `-zprof0` we are telling GROMACS we want the potential to be zero at 1.0
@@ -186,7 +189,7 @@ missing a correction of 2kTln(w) that needs to be added. To plot this in gnuplot
 do the following in a gnuplot terminal:
 
 ```gnuplot
-plot 'profile.xvg' u 1:($2+2*8.314e-3*298.15*log($1)) w l
+> plot 'profile.xvg' u 1:($2+2*8.314e-3*298.15*log($1)) w l
 ```
 
 Your PMF should now look like this:
