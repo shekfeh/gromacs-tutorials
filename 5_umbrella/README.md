@@ -96,7 +96,8 @@ Here's an explanation of the new parameters that are used in each file:
 The parameter files are setup for a 100 ps NVT equilbiration, then a 1 ns NPT
 equilibration, and lastly a 5 ns production run. We are planning on the methanes
 getting to the correct distances when the umbrella potential is applied during
-the equilibrations.
+the equilibrations. For some other systems you may have to be more methodical in
+how you generate your initial configurations for each window.
 
 Simulation
 ----------
@@ -183,6 +184,15 @@ Comparing this with the PMF from tutorial 3 we can see that they are identical:
 One difference is that with the direct method we never get near as close as with
 umbrella sampling. Two methanes will not just naturally want to be near each
 other, which is why we have to add the umbrella potentials to keep them there.
+
+The other output is `histo.xvg` which is helpful in determining if there is
+enough overlap between windows. Here is a plot of each histogram for this
+simulation:
+
+![Histogram](hist.png)
+
+Clearly we our windows are overlapping sufficiently. If they were not, we might
+have to choose smaller window or pick specific spots that were missing.
 
 Summary
 -------
