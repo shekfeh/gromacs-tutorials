@@ -294,7 +294,13 @@ Here's my output:
 	Pressure                    1.13652      0.034     291.55  0.0616002  (bar)
 	Density                     995.063      0.011    5.49186 -0.0549838  (kg/m^3)
 
-Additionally, you can visualize your simulation using a program like
+If you look at the [TIP4PEW
+paper](http://link.aip.org/link/doi/10.1063/1.1683075) in figure 4, you can see
+we have achieved the correct density. Additionally note that [Wolfram Alpha
+says](http://www.wolframalpha.com/input/?i=density+of+water+298.15+K)
+the density of water at standard conditions is 997 kg/m^3.
+
+You can also visualize your simulation using a program like
 [vmd](http://www.ks.uiuc.edu/Research/vmd/).  To open the production part with
 vmd do:
 
