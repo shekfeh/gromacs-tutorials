@@ -192,7 +192,8 @@ simulation:
 ![Histogram](hist.png)
 
 Clearly we our windows are overlapping sufficiently. If they were not, we might
-have to choose smaller window or pick specific spots that were missing.
+have to choose a smaller window size or pick specific spots that were missing to
+simulate.
 
 Summary
 -------
