@@ -268,8 +268,12 @@ Now run *gmx rdf*:
 $ gmx rdf -f prd.xtc -n index.ndx
 ```
 
-At the prompt select `C` for the reference group. Then select `OW`. A plot of
-the result should look something like this:
+At the prompt select `C` for the reference group. Then select `OW`. Then type
+`CTRL-D` to end. A plot of the result, found in columns 1 and 3 of the data would be plotted by doing the following in gnuplot:
+
+> plot 'rdf.xvg' u 1:3 w l
+
+It should look something like this:
 
 ![C-OW RDF](rdf.png)
 
