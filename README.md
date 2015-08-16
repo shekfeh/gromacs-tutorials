@@ -4,7 +4,8 @@ Some [GROMACS](http://www.gromacs.org) tutorials for beginners. It's not
 necessary to do the tutorials in order, but the first two
 tutorials are essential before going on to the others, as the structure file
 (`methane.pdb`) and topology file (`topol.top`) for methane from tutorial 2 are
-used in all subsequent tutorials.
+used in all subsequent tutorials. I've tested all of these tutorials with 5.0,
+and they should work with 5.1 as well.
 
 I assume you have some working knowledge of the command line. Specifically, you
 should know how to make directories, change into them, and edit text files.
