@@ -10,8 +10,10 @@ have changed. Note especially that the pull code for umbrella sampling has
 changed since 5.0 and older releases.
 
 I assume you have some working knowledge of the command line. Specifically, you
-should know how to make directories, change into them, and edit text files.
-Obviously I also assume you have GROMACS installed on a machine available to you.
+should know how to make directories, change into them, and edit text files. When
+you see a `$` or `>` this is the prompt on the commandline and indicates you
+should type the text following it. Obviously I also assume you have GROMACS
+installed on a machine available to you.
 
 Throughout the tutorials we'll be using OPLS methane and TIP4PEW water.
 
