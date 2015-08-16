@@ -296,8 +296,9 @@ Here's my output:
 	Pressure                    1.13652      0.034     291.55  0.0616002  (bar)
 	Density                     995.063      0.011    5.49186 -0.0549838  (kg/m^3)
 
-Additionally, you can visualize your simulation using a program like vmd. To
-open the production part do:
+Additionally, you can visualize your simulation using a program like
+[vmd](http://www.ks.uiuc.edu/Research/vmd/).  To open the production part with
+vmd do:
 
 	vmd prd.gro prd.xtc
 
