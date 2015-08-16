@@ -186,11 +186,13 @@ topology file).
 
 First, let's run our two minimization steps by doing the following:
 
-	gmx grompp -f mdp/min.mdp -o min -pp min -po min
-	gmx mdrun -deffnm min
+```bash	
+gmx grompp -f mdp/min.mdp -o min -pp min -po min
+gmx mdrun -deffnm min
 
-	gmx grompp -f mdp/min2.mdp -o min2 -pp min2 -po min2 -c min -t min -maxwarn 1
-	gmx mdrun -deffnm min2
+gmx grompp -f mdp/min2.mdp -o min2 -pp min2 -po min2 -c min -t min -maxwarn 1
+gmx mdrun -deffnm min2
+```
 	
 At each part we are reading in the .mdp file with the `-f` flag. By default if
 `-c` and `-p` flags are not specified GROMACS uses `conf.gro` and `topol.top`
@@ -213,26 +215,36 @@ To get a feel for what's going on, let's extract the potential energy of both of
 these parts using the GROMACS command *gmx energy*. Do the following and enter
 the number that corresponds with `Potential`, followed by enter again:
 
-	gmx energy -f min.edr -o min-energy.xvg
+```bash	
+gmx energy -f min.edr -o min-energy.xvg
+```
 
 Now do the same for the second minimization:
 
-	gmx energy -f min2.edr -o min2-energy.xvg
+```bash	
+gmx energy -f min2.edr -o min2-energy.xvg
+```
 
 The header of the resulting `.xvg.` file will contain information for use with
 the Grace plotting program. I use gnuplot so some of these lines will cause
 errors. I just simply replace every `@` character with `#` in the `.xvg.` file
 and then I can use gnuplot. To plot with first start gnuplot:
 
-	gnuplot
+```bash	
+gnuplot
+```
 
 Then in the gnuplot terminal do:
 
-	plot 'min-energy.xvg' w l
+```gnuplot
+plot 'min-energy.xvg' w l
+```
 
 To plot the second minimization step do:
 
-	plot 'min2-energy.xvg' w l
+```gnuplot
+plot 'min2-energy.xvg' w l
+```
 
 Your plots should looks something like this:
 
@@ -245,12 +257,16 @@ Your plots should looks something like this:
 Now that we have a good starting structure, let's do the first equilibration
 step, by adding the temperature coupling:
 
-	gmx grompp -f mdp/eql.mdp -o eql -pp eql -po eql -c min2 -t min2
-	gmx mdrun -deffnm eql
+```bash	
+gmx grompp -f mdp/eql.mdp -o eql -pp eql -po eql -c min2 -t min2
+gmx mdrun -deffnm eql
+```
 
 Let's take a look at how the temperature varies throughout the simulation:
 
-	gmx energy -f eql.edr -o eql-temp.xvg 
+```bash	
+gmx energy -f eql.edr -o eql-temp.xvg 
+```
 
 Choose the number corresponding to `Temperature` at the prompt and hit enter
 again. Plot it in gnuplot as above. You should see something like:
@@ -264,8 +280,10 @@ settles.
 
 For our last equilibration, as stated earlier, we're adding a pressure coupling:
 
-	gmx grompp -f mdp/eql2.mdp -o eql2 -pp eql2 -po eql2 -c eql -t eql
-	gmx mdrun -deffnm eql2
+```bash	
+gmx grompp -f mdp/eql2.mdp -o eql2 -pp eql2 -po eql2 -c eql -t eql
+gmx mdrun -deffnm eql2
+```
 
 You can check out the temperature and pressure using *gmx energy* as above.
 Here's a plot of the pressure:
@@ -279,8 +297,10 @@ full equilibration should be close to 1 bar in this case.
 
 Now for the production part do:
 
-	gmx grompp -f mdp/prd.mdp -o prd -pp prd -po prd -c eql2 -t eql2
-	gmx mdrun -deffnm prd
+```bash
+gmx grompp -f mdp/prd.mdp -o prd -pp prd -po prd -c eql2 -t eql2
+gmx mdrun -deffnm prd
+```
 
 Analysis
 --------
@@ -306,7 +326,9 @@ You can also visualize your simulation using a program like
 [vmd](http://www.ks.uiuc.edu/Research/vmd/).  To open the production part with
 vmd do:
 
-	vmd prd.gro prd.xtc
+```bash
+vmd prd.gro prd.xtc
+```
 
 Here's a snapshot:
 
@@ -316,7 +338,9 @@ Note that do to the period boundary condition this can look kind of strange
 with bonds stretching across the box. You can make molecules whole by using *gmx
 trjconv*:
 
-	gmx trjconv -f prd.xtc -s prd.tpr -pbc mol -o prd-mol.xtc
+```bash
+gmx trjconv -f prd.xtc -s prd.tpr -pbc mol -o prd-mol.xtc
+```
 
 Viewing that file should look much nicer:
 
