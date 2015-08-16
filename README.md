@@ -22,8 +22,8 @@ Throughout the tutorials we'll be using OPLS methane and TIP4PEW water.
    solutes into a system. Get the methane-methane potential of mean force.
 4. [Free energy of solvation of methane](4_methane_fe/README.md) - How to do a free energy
    simulation when coupling a molecule. Use MBAR to get the result.
-5. Umbrella sampling - Get methane-methane PMF from umbrella sampling using pull
-   code. Coming soon.
+5. [Umbrella sampling](5_umbrella) - Get methane-methane PMF from umbrella sampling using pull
+   code.
 
 ## Links
 
