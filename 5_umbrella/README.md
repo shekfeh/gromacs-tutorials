@@ -184,7 +184,7 @@ and electrostatic interactions.
 After running *gmx wham* you'll get the potential of mean force in a file named
 `profile.xvg`. If you were to plot this right away, it should look like this:
 
-![PMF](pmf1.png)
+![PMF](profile1.png)
 
 We would expect the interaction to go to zero at longer distances. We are
 missing a correction of 2kTln(w) that needs to be added. To plot this in gnuplot
@@ -196,11 +196,11 @@ do the following in a gnuplot terminal:
 
 Your PMF should now look like this:
 
-![PMF](pmf2.png)
+![PMF](profile2.png)
 
 Comparing this with the PMF from tutorial 3 we can see that they are identical:
 
-![PMF](pmf3.png)
+![PMF](profile3.png)
 
 One difference is that with the direct method we never get near as close as with
 umbrella sampling. Two methanes will not just naturally want to be near each
@@ -210,7 +210,7 @@ The other output is `histo.xvg` which is helpful in determining if there is
 enough overlap between windows. Here is a plot of each histogram for this
 simulation:
 
-![Histogram](hist.png)
+![Histogram](histo.png)
 
 Clearly we our windows are overlapping sufficiently. If they were not, we might
 have to choose a smaller window size or pick specific spots that were missing to
