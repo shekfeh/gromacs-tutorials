@@ -214,7 +214,7 @@ of the "better" methods.
 
 And here is the <dHdl> curve:
 
-![dHdl](dHdl_TI.png)
+![dHdl](dhdl_TI.png)
 
 Here we are looking for places where the curvature is high.The curvature is
 higher around states 10, 11, and 12. Depending on our application, we might want
