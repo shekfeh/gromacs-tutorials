@@ -13,7 +13,7 @@ set xrange[0:1.4]
 unset key
 
 set xlabel "r (nm)"
-set ylabel "w(r)"
+set ylabel "w(r) (kJ / mol)"
 set output "profile1.tex"
 plot 'profile.xvg' w l
 
