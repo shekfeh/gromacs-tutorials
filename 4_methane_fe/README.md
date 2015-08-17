@@ -205,7 +205,7 @@ $ alchemical_analysis -p prd. -u kcal -g -f 20
 
 Here is a visual comparison of the calculated value for each segment:
 
-![Methods]{dF_state.png)
+![Methods](dF_state.png)
 
 I can see that one of the methods (DEXP) gets a different results for
 calculations between states 5 and 6 as well as between 6 and 7. I'm not too
@@ -214,7 +214,7 @@ of the "better" methods.
 
 And here is the <dHdl> curve:
 
-![dHdl]{dHdl_TI.png)
+![dHdl](dHdl_TI.png)
 
 Here we are looking for places where the curvature is high.The curvature is
 higher around states 10, 11, and 12. Depending on our application, we might want
@@ -223,7 +223,7 @@ to possibly sample more states in that area.
 Lastly, here is a plot of the result calculated as a function of time, both
 running the simulation forward and running it in reverse:
 
-![dF_time]{dF_t.png)
+![dF_time](dF_t.png)
 
 The point here is that we're looking to make sure that the simulation is
 well-equilibrated; otherwise, the result will not be correct. If the curves were
@@ -245,7 +245,7 @@ In this tutorial we performed a free energy simulation on methane in water. We
 turned off electrostatics linearly first, and then we used a soft-core potential
 to turn off the van der Waals interactions. The intramolecular interactions for
 methane remained on, so its as if we were removing the methane from the water
-and placing it in a vacuum. Our result of 2.29 kcal /mol is comparable to
+and placing it in a vacuum. Our result of 2.289 kcal /mol is comparable to
 published results.
 
 [Return to main page](https://wesbarnett.github.io/gromacs-tutorials/)
