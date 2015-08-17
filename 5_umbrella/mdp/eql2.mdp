@@ -31,7 +31,6 @@ pcoupl                   = Parrinello-Rahman
 tau_p                    = 2.0
 compressibility          = 4.46e-5
 ref_p                    = 1.0 
-refcoord_scaling         = com
 
 pull                     = yes
 pull-ngroups             = 2
