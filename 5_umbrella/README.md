@@ -196,7 +196,8 @@ Your PMF should now look like this:
 
 ![PMF](profile2.png)
 
-Comparing this with the PMF from tutorial 3 we can see that they are identical:
+Comparing this with the PMF from tutorial 3 we can see that they are nearly
+identical:
 
 ![PMF](profile3.png)
 
