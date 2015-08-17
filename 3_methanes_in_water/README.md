@@ -93,6 +93,9 @@ Your plot should look something like this:
 
 ![PMF](pmf.png)
 
+You notice there is a small gap in our sampling. The methanes never interacted
+at that distance. We'll use umbrella sampling in a later tutorial to solve this.
+
 Summary
 -------
 
