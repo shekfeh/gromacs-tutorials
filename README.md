@@ -13,7 +13,9 @@ I assume you have some working knowledge of the command line. Specifically, you
 should know how to make directories, change into them, and edit text files. When
 you see a `$` or `>` this is the prompt on the commandline and indicates you
 should type the text following it. Obviously I also assume you have GROMACS
-installed on a machine available to you.
+installed on a machine available to you. Source code and installation
+instructions can be found on the [GROMACS documentation
+page](http://manual.gromacs.org/documentation/5.1/).
 
 Throughout the tutorials we'll be using OPLS methane and TIP4PEW water.
 
