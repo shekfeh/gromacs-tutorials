@@ -167,28 +167,28 @@ Your output should look something like this:
 	------------ --------------------- --------------------- --------------------- --------------------- --------------------- ---------------------
 	   States           TI (kcal/mol)   TI-CUBIC (kcal/mol)       DEXP (kcal/mol)       IEXP (kcal/mol)        BAR (kcal/mol)       MBAR (kcal/mol) 
 	------------ --------------------- --------------------- --------------------- --------------------- --------------------- ---------------------
-	   0 -- 1         0.002  +-  0.000      0.002  +-  0.000      0.001  +-  0.000      0.002  +-  0.000      0.002  +-  0.000      0.002  +-  0.000
-	   1 -- 2        -0.000  +-  0.000     -0.000  +-  0.000      0.000  +-  0.000     -0.000  +-  0.000     -0.000  +-  0.000     -0.001  +-  0.000
-	   2 -- 3        -0.002  +-  0.000     -0.002  +-  0.000     -0.003  +-  0.000     -0.002  +-  0.000     -0.002  +-  0.000     -0.003  +-  0.000
-	   3 -- 4        -0.005  +-  0.000     -0.005  +-  0.000     -0.004  +-  0.000     -0.005  +-  0.000     -0.005  +-  0.000     -0.005  +-  0.000
-	   4 -- 5         0.090  +-  0.002      0.091  +-  0.002      0.093  +-  0.004      0.092  +-  0.003      0.090  +-  0.002      0.092  +-  0.001
-	   5 -- 6         0.058  +-  0.002      0.058  +-  0.003      0.062  +-  0.004      0.060  +-  0.003      0.059  +-  0.002      0.060  +-  0.001
-	   6 -- 7         0.015  +-  0.003      0.017  +-  0.003      0.003  +-  0.010      0.020  +-  0.003      0.018  +-  0.003      0.016  +-  0.002
-	   7 -- 8        -0.049  +-  0.004     -0.046  +-  0.004     -0.045  +-  0.010     -0.046  +-  0.004     -0.045  +-  0.003     -0.049  +-  0.002
-	   8 -- 9        -0.151  +-  0.004     -0.144  +-  0.005     -0.142  +-  0.010     -0.142  +-  0.005     -0.144  +-  0.004     -0.153  +-  0.003
-	   9 -- 10       -0.342  +-  0.005     -0.329  +-  0.006     -0.313  +-  0.019     -0.343  +-  0.007     -0.332  +-  0.005     -0.336  +-  0.004
-	  10 -- 11       -0.616  +-  0.005     -0.637  +-  0.006     -0.615  +-  0.015     -0.646  +-  0.006     -0.641  +-  0.005     -0.634  +-  0.004
-	  11 -- 12       -0.683  +-  0.003     -0.717  +-  0.003     -0.713  +-  0.004     -0.719  +-  0.004     -0.718  +-  0.003     -0.713  +-  0.002
-	  12 -- 13       -0.438  +-  0.001     -0.438  +-  0.002     -0.440  +-  0.002     -0.431  +-  0.002     -0.436  +-  0.001     -0.437  +-  0.001
-	  13 -- 14       -0.135  +-  0.001     -0.129  +-  0.001     -0.127  +-  0.001     -0.130  +-  0.001     -0.128  +-  0.001     -0.129  +-  0.000
+	   0 -- 1         0.002  +-  0.000      0.002  +-  0.000      0.002  +-  0.000      0.001  +-  0.000      0.002  +-  0.000      0.002  +-  0.000
+	   1 -- 2        -0.000  +-  0.000     -0.000  +-  0.000     -0.001  +-  0.000     -0.000  +-  0.000     -0.000  +-  0.000     -0.001  +-  0.000
+	   2 -- 3        -0.003  +-  0.000     -0.003  +-  0.000     -0.002  +-  0.000     -0.003  +-  0.000     -0.003  +-  0.000     -0.003  +-  0.000
+	   3 -- 4        -0.005  +-  0.000     -0.005  +-  0.000     -0.005  +-  0.000     -0.006  +-  0.000     -0.005  +-  0.000     -0.005  +-  0.000
+	   4 -- 5         0.093  +-  0.002      0.094  +-  0.002      0.090  +-  0.005      0.096  +-  0.003      0.095  +-  0.002      0.094  +-  0.001
+	   5 -- 6         0.063  +-  0.002      0.065  +-  0.003      0.055  +-  0.010      0.063  +-  0.003      0.064  +-  0.002      0.060  +-  0.001
+	   6 -- 7         0.013  +-  0.003      0.014  +-  0.003      0.025  +-  0.006      0.009  +-  0.003      0.014  +-  0.003      0.014  +-  0.002
+	   7 -- 8        -0.055  +-  0.003     -0.052  +-  0.004     -0.051  +-  0.008     -0.050  +-  0.004     -0.052  +-  0.003     -0.052  +-  0.002
+	   8 -- 9        -0.157  +-  0.004     -0.151  +-  0.005     -0.149  +-  0.014     -0.155  +-  0.006     -0.153  +-  0.004     -0.156  +-  0.003
+	   9 -- 10       -0.338  +-  0.006     -0.324  +-  0.006     -0.306  +-  0.020     -0.332  +-  0.007     -0.330  +-  0.005     -0.336  +-  0.004
+	  10 -- 11       -0.602  +-  0.005     -0.621  +-  0.006     -0.595  +-  0.016     -0.631  +-  0.006     -0.626  +-  0.005     -0.627  +-  0.004
+	  11 -- 12       -0.674  +-  0.003     -0.708  +-  0.003     -0.708  +-  0.005     -0.709  +-  0.004     -0.708  +-  0.003     -0.711  +-  0.002
+	  12 -- 13       -0.437  +-  0.001     -0.437  +-  0.002     -0.435  +-  0.002     -0.441  +-  0.002     -0.437  +-  0.001     -0.438  +-  0.001
+	  13 -- 14       -0.138  +-  0.001     -0.134  +-  0.001     -0.131  +-  0.001     -0.132  +-  0.001     -0.131  +-  0.001     -0.130  +-  0.000
 	------------ --------------------- --------------------- --------------------- --------------------- --------------------- ---------------------
-	  Coulomb:       -0.006  +-  0.001     -0.005  +-  0.001     -0.006  +-  0.001     -0.006  +-  0.001     -0.006  +-  0.000     -0.006  +-  0.000
-	  vdWaals:       -2.252  +-  0.015     -2.274  +-  0.015     -2.235  +-  0.031     -2.284  +-  0.013     -2.278  +-  0.010     -2.284  +-  0.012
-	    TOTAL:       -2.257  +-  0.015     -2.279  +-  0.015     -2.241  +-  0.031     -2.290  +-  0.013     -2.284  +-  0.010     -2.290  +-  0.012
+	  Coulomb:       -0.007  +-  0.001     -0.007  +-  0.001     -0.006  +-  0.001     -0.007  +-  0.001     -0.007  +-  0.000     -0.007  +-  0.000
+	  vdWaals:       -2.232  +-  0.015     -2.255  +-  0.015     -2.205  +-  0.033     -2.281  +-  0.013     -2.265  +-  0.010     -2.282  +-  0.013
+	    TOTAL:       -2.238  +-  0.015     -2.262  +-  0.015     -2.211  +-  0.033     -2.288  +-  0.013     -2.272  +-  0.010     -2.289  +-  0.013
 
 This is the free energy of removing a methane, so the free energy of solvation
 is actually negative one times this, since it is the reverse process. Our result
-of 2.290 kcal / mol is comparable to published figures. [In a paper that
+of 2.289 kcal / mol is comparable to published figures. [In a paper that
 simulated OPLS methane with TIP3P](http://dx.doi.org/10.1063/1.1587119),
 they achieved a result of 2.44 kcal/mol.  The difference can probably be
 attributed to using a different water model.
@@ -197,13 +197,46 @@ Note that the script provides six different results from six different methods.
 Some of these methods are better than others, but the fact that all six are
 close to each other tells us we probably sampled enough states to get an
 accurate number. MBAR is one of the better methods, although BAR and TI are good
-as well.
+as well. I reran the script to gather some more analysis:
+
+```bash
+$ alchemical_analysis -p prd. -u kcal -g -f 20
+```
+
+Here is a visual comparison of the calculated value for each segment:
+
+![Methods]{dF_state.png)
+
+I can see that one of the methods (DEXP) gets a different results for
+calculations between states 5 and 6 as well as between 6 and 7. I'm not too
+concerned about this, since the other methods line up well and DEXP is not one
+of the "better" methods.
+
+And here is the <dHdl> curve:
+
+![dHdl]{dHdl_TI.png)
+
+Here we are looking for places where the curvature is high.The curvature is
+higher around states 10, 11, and 12. Depending on our application, we might want
+to possibly sample more states in that area.
+
+Lastly, here is a plot of the result calculated as a function of time, both
+running the simulation forward and running it in reverse:
+
+![dF_time]{dF_t.png)
+
+The point here is that we're looking to make sure that the simulation is
+well-equilibrated; otherwise, the result will not be correct. If the curves were
+flat for any significant portion of the first part of the plot, this would
+indicate our system may not be well equilibrated before we started the
+simulation. We could discard that non-equilibrated data and redo the
+calculation.
 
 There are a couple of other command line flags you can use with the
 `alchemical_analysis` script. Be sure to checkout the homepage of the script and
-the [paper on best practices in free energy
-analysis](10.1007/s10822-015-9840-9). I won't go into detail of all the options
-here.
+the [paper on best practices in free energy analysis](10.1007/s10822-015-9840-9)
+which goes much more into detail on these and other plots. I won't go into
+detail of all the options here.
 
 Summary
 -------
