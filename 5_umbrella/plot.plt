@@ -18,10 +18,10 @@ set output "profile1.tex"
 plot 'profile.xvg' w l
 
 set output "profile2.tex"
-plot 'profile.xvg' u 1:($2+2*8.314e-3*298.15*log($1)) w l
+plot 'profile.xvg' u 1:($2+2*8.314e-3*298.15*log($1)+77) w l
 
 set output "profile3.tex"
-plot 'profile.xvg' u 1:($2+2*8.314e-3*298.15*log($1)) w l, \
+plot 'profile.xvg' u 1:($2+2*8.314e-3*298.15*log($1)+80.0) w l, \
      '../3_methanes_in_water/rdf.xvg' u 1:(-8.314e-3*298.15*log($2*10/9)) w l
 
 set output "histo.tex"

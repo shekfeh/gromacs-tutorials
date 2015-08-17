@@ -174,12 +174,8 @@ $ ls pullf-prd.*.xvg > pullf.dat
 Then you can run *gmx wham*:
 
 ```bash
-$ gmx wham -it tpr.dat -f pullf.dat -zprof0 1.0
+$ gmx wham -it tpr.dat -f pullf.dat
 ```
-
-Using `-zprof0` we are telling GROMACS we want the potential to be zero at 1.0
-nm. This is reasonable for this system, since 1.0 is the cutoff for both our VDW
-and electrostatic interactions.
 
 After running *gmx wham* you'll get the potential of mean force in a file named
 `profile.xvg`. If you were to plot this right away, it should look like this:
@@ -187,11 +183,13 @@ After running *gmx wham* you'll get the potential of mean force in a file named
 ![PMF](profile1.png)
 
 We would expect the interaction to go to zero at longer distances. We are
-missing a correction of 2kTln(w) that needs to be added. To plot this in gnuplot
-do the following in a gnuplot terminal:
+missing a correction of 2kTln(w) that needs to be added. Additionally we need to
+shift the plot up such that its tail goes to zero. I found adding about 77
+worked for my particular system, but yours may be different. To plot this in
+gnuplot do the following in a gnuplot terminal:
 
 ```gnuplot
-> plot 'profile.xvg' u 1:($2+2*8.314e-3*298.15*log($1)) w l
+> plot 'profile.xvg' u 1:($2+2*8.314e-3*298.15*log($1)+77) w l
 ```
 
 Your PMF should now look like this:
