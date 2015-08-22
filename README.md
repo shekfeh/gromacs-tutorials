@@ -31,6 +31,7 @@ Throughout the tutorials we'll be using OPLS methane and TIP4PEW water.
    simulation when coupling a molecule. Use MBAR to get the result.
 5. [Umbrella sampling](https://github.com/wesbarnett/gromacs-tutorials/blob/master/5_umbrella/README.md) - Get methane-methane PMF from umbrella sampling using pull
    code.
+6. [Test particle insertion](https://github.com/wesbarnett/gromacs-tutorials/blob/master/6_tpi/README.md) - Get the chemical potential of methane using Widom's method.
 
 ## Links
 
