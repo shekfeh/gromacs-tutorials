@@ -9,13 +9,16 @@ used in all subsequent tutorials. The tutorials are designed for GROMACS version
 have changed. Note especially that the pull code for umbrella sampling has
 changed since 5.0 and older releases.
 
+##Prerequisites
+
 I assume you have some working knowledge of the command line. Specifically, you
-should know how to make directories, change into them, and edit text files. When
-you see a `$` or `>` this is the prompt on the commandline and indicates you
-should type the text following it. Obviously I also assume you have GROMACS
-installed on a machine available to you. Source code and installation
-instructions can be found on the [GROMACS documentation
-page](http://manual.gromacs.org/documentation/5.1/).
+should know how to make directories, change into them, edit text files, and
+download files to your system. When you see a `$` or `>` this is the prompt on
+the commandline and indicates you should type the text following it.
+
+I also assume you have GROMACS installed on a machine available to you. Source
+code and installation instructions can be found on the [GROMACS documentation
+page](http://manual.gromacs.org/documentation).
 
 Throughout the tutorials we'll be using OPLS methane and TIP4PEW water.
 
