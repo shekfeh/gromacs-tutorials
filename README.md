@@ -14,7 +14,9 @@ changed since 5.0 and older releases.
 I assume you have some working knowledge of the command line. Specifically, you
 should know how to make directories, change into them, edit text files, and
 download files to your system. When you see a `$` or `>` this is the prompt on
-the commandline and indicates you should type the text following it.
+the commandline and indicates you should type the text following it. If the
+commandline is new to you, consider going through [CodeAcademy's
+tutorial](https://www.codecademy.com/en/courses/learn-the-command-line/).
 
 I also assume you have GROMACS installed on a machine available to you. Source
 code and installation instructions can be found on the [GROMACS documentation
