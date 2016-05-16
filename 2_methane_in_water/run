@@ -5,7 +5,7 @@ set -e
 gmx grompp -f mdp/min.mdp -o min -pp min -po min
 gmx mdrun -deffnm min
 
-gmx grompp -f mdp/min2.mdp -o min2 -pp min2 -po min2 -c min -t min -maxwarn 1
+gmx grompp -f mdp/min2.mdp -o min2 -pp min2 -po min2 -c min -t min
 gmx mdrun -deffnm min2
 
 gmx grompp -f mdp/eql.mdp -o eql -pp eql -po eql -c min2 -t min2
