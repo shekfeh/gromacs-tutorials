@@ -126,19 +126,21 @@ a larger time step than otherwise.
 
 For the first minimization we use the steepest descents algorithm by setting
 `integrator = steep` to minimize the energy of the system with a maximum of
-50,000 steps (`nsteps = 50000`). The minimization will stop if the energy
-converges before then. The second minimization we are simply using another
-(slower) algorithm by setting `integrator = l-bfgs`. This probably isn't
-required in most cases, but I personally like to have these two steps to ensure
-that my system has a good starting structure. This algorithm does not support
-constraints, which is why they are turned off. Additionally we have `define =
+1,000 steps (`nsteps = 1000`). The minimization will stop if the energy
+converges before then. Additionally we have `define =
 -DFLEXIBLE`. This lets GROMACS know to use flexible water, since by default all
-water models are rigid. In the water model's topology file, which we have
-includes, there is an if statement that looks for the `FLEXIBLE` variable to
-defined.
+water models are rigid using an algorithm called SETTLE. In the water model's
+topology file, which we have includes, there is an if statement that looks for
+the `FLEXIBLE` variable to defined. The purpose of this first minimization is to
+get the molecules in a good starting position so we can turn on SETTLE without
+any errors.
 
-The last three steps all use the leap-frog integrator by setting `integrator =
-md`. Additionally each one will use a 2 fs time step by setting `dt = 0.002`.
+In the second minimization we are simply removing `define = -DFLEXIBLE` and
+increasing the number of maximum steps to 50,000. 
+
+The last three parts---the two equilibrations and production---all use the
+leap-frog integrator by setting `integrator = md`. Additionally each one will
+use a 2 fs time step by setting `dt = 0.002`.
 
 For the first equilibration step there are a few things to note. We are adding
 several parameters shown below:
@@ -193,7 +195,7 @@ First, let's run our two minimization steps by doing the following:
 $ gmx grompp -f mdp/min.mdp -o min -pp min -po min
 $ gmx mdrun -deffnm min
 
-$ gmx grompp -f mdp/min2.mdp -o min2 -pp min2 -po min2 -c min -t min -maxwarn 1
+$ gmx grompp -f mdp/min2.mdp -o min2 -pp min2 -po min2 -c min -t min
 $ gmx mdrun -deffnm min2
 ```
 	
