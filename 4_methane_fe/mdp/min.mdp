@@ -1,6 +1,7 @@
 
+define                   = -DFLEXIBLE
 integrator               = steep
-nsteps                   = 50000
+nsteps                   = 1000
 
 nstenergy                = 500
 nstlog                   = 500

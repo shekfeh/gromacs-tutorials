@@ -1,6 +1,5 @@
 
-define                   = -DFLEXIBLE
-integrator               = l-bfgs
+integrator               = steep
 nsteps                   = 50000
 
 nstenergy                = 500
