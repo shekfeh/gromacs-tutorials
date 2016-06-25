@@ -47,3 +47,6 @@ useful are:
 * [gnuplot](http://www.gnuplot.info/)
 * [vmd](http://www.ks.uiuc.edu/Research/vmd/)
 
+
+Were these tutorials helpful to you? Send me a BTC tip:
+`1PZziQoUJfhMKZC8gXQZtS5ebHWMba3Geb`
