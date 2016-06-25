@@ -223,3 +223,6 @@ methanes in water. From there we used *gmx wham* to extract the potential of
 mean force.
 
 [Return to main page](https://wesbarnett.github.io/gromacs-tutorials/)
+
+Was this tutorial helpful to you? Send me a BTC tip:
+`1PZziQoUJfhMKZC8gXQZtS5ebHWMba3Geb`
