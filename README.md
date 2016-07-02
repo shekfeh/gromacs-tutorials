@@ -1,5 +1,7 @@
 #GROMACS Tutorials
 
+Wes Barnett <gromacs-tutorials@wbarnett.us>
+
 Some [GROMACS](http://www.gromacs.org) tutorials for beginners. It's not
 necessary to do the tutorials in order, but the first two
 tutorials are essential before going on to the others, as the structure file
