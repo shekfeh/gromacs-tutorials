@@ -249,6 +249,3 @@ and placing it in a vacuum. Our result of 2.289 kcal /mol is comparable to
 published results.
 
 [Return to main page](https://wesbarnett.github.io/gromacs-tutorials/)
-
-Was this tutorial helpful to you? Send me a BTC tip:
-`1PZziQoUJfhMKZC8gXQZtS5ebHWMba3Geb`
