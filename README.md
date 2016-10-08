@@ -7,9 +7,9 @@ necessary to do the tutorials in order, but the first two
 tutorials are essential before going on to the others, as the structure file
 (`methane.pdb`) and topology file (`topol.top`) for methane from tutorial 2 are
 used in all subsequent tutorials. The tutorials are designed for GROMACS version
-5.1. If you are using an older version, some of the commands or parameters may
-have changed. Note especially that the pull code for umbrella sampling has
-changed since 5.0 and older releases.
+5.1 and up. If you are using an older version, some of the commands or
+parameters may have changed. Note especially that the pull code for umbrella
+sampling has changed since 5.0 and older releases.
 
 ##Prerequisites
 
