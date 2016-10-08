@@ -291,6 +291,3 @@ solvated*. After this we ran a simulation, just like last time. Lastly, we found
 the C-OW radial distribution function using *gmx rdf*.
 
 [Return to main page](https://wesbarnett.github.io/gromacs-tutorials/)
-
-Was this tutorial helpful to you? Send me a BTC tip:
-`1PZziQoUJfhMKZC8gXQZtS5ebHWMba3Geb`

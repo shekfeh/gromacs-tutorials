@@ -107,6 +107,3 @@ correction due to this, and from there we were able to get the potential of mean
 force.
 
 [Return to main page](https://wesbarnett.github.io/gromacs-tutorials/)
-
-Was this tutorial helpful to you? Send me a BTC tip:
-`1PZziQoUJfhMKZC8gXQZtS5ebHWMba3Geb`

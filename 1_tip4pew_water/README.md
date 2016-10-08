@@ -363,6 +363,3 @@ information about the simulation. After the production run we were able to find
 the density of TIP4PEW water.
 
 [Return to main page](https://wesbarnett.github.io/gromacs-tutorials/)
-
-Was this tutorial helpful to you? Send me a BTC tip:
-`1PZziQoUJfhMKZC8gXQZtS5ebHWMba3Geb`
