@@ -26,55 +26,74 @@ Setup
 
 Follow Tutorial 1 to run a system containing TIP4PEW water.
 
+### Add test particle to topology file
+
+Our original topology file just had water. In the new topology file we simply
+need to add 1 test particle, and it needs to be the last molecule in the system.
+We'll use `opls_066` for the particle's atom type which is OPLS's united atom
+methane. Here's what my final topology file looks like (the number of waters
+will be different for your system):
+
+    #include "oplsaa.ff/forcefield.itp"
+    #include "oplsaa.ff/tip4pew.itp"
+
+    [ moleculetype ]
+    ; Name          nrexcl
+    Methane         3
+
+    [ atoms ]
+    ;   nr       type      resnr residue  atom   cgnr     charge       mass
+         1       opls_066  1     CH4      C      1          0     16.043
+
+
+    [ System ]
+    TIP4PEW in water
+
+    [ Molecules ] 
+    SOL               395
+    Methane           1
+
+### Add test particle to gro file
+
+You also need to add the test particle to the gro file. Simply edit `conf.gro`
+(or any of the other `.gro` files uses) and add a line at the end containing the
+test particle's position (right before the box coordinates). The line I added
+looks like this:
+
+    396CH4      C 1581   0.000   0.000   0.000
+
+Additionally you need to add 1 to the total number of particles in the system on
+the second line of the `.gro` file.
+
 ### Parameter files
 
-We only need on parameter file for TPI.
-TODO: expand
-
-TODO: update
-Here's an explanation of the new parameters that are used in each file:
-
-|  parameter     | value     | explanation |
-| ---------------|-----------|-------------| 
-|  pull          | yes | Use the pull code. |
-|  pull-ngroups       | 2         | We have two groups that we're pulling.  |
-|  pull-group1-name   | CA     | We specified this in the index file. For us this will be the carbon of one of the methanes, although we probably could have chosen the entire methane. If we did that it would have been pulled along the COM of the entire molecule. |
-|  pull-group2-name   | CB  | The carbon of the other methane. |
-|  pull-ncoords       |  1  | We are pulling along only one coordinate. |
-|  pull-coord1-geometry  | distance  | We're going to pull along the vector connecting our two groups. |
-| pull-coord1-type    |   umbrella | Use an umbrella (harmonic) potential for this coordinate.| 
-|  pull-coord1-groups | 1 2       | For this pull coordinate these are the two groups (defined below) which will be pulled. You can actually have more thane one pull coordinate and so do pulling across different sets of molecules, but that's not applicable here. |
-|  pull-coord1-k      | 5000.0  | The force constant used in the umbrella potential in kJ/(mol nm). |
-|  pull-coord1-init   | WINDOW  | This is the distance we want our two groups to be apart. I've put this keyword here that I'll replace in our bash script for each window |
-|  pull-coord1-rate   | 0.0    | We don't want the groups to move along the coordinate any, so this is 0. |
-|  pull-coord1-start         | no        | We're manually specifying the distance for each window, so we do not want to add the center of mass distance to the calculation. |
-
-### Topology file
-
-
+We only need one parameter file for TPI. Simply copy `prd.mdp` from your bulk
+water simulation and change `integrator` to `tpi`. You should change `nsteps` to
+the number of insertions per frame that you want to attempt. You will also need
+to change `cutoff-scheme` to `group`, since `Verlet` has not be implemented for
+TPI.
 
 Simulation
 ----------
 
-TODO: make sure these are correct
 For the simulation we are just rerunning the bulk water simulation using the
-saved trajectory file. To do this first run `grompp`:
+saved trajectory file (which was named `prd.xtc` in the first tutorial). To do
+this first run `grompp`:
 
 ```bash
-$ gmx grompp -f tpi.mdp -o tpi -po tpi -pp tpi -c tpi.gro
+$ gmx grompp -f mdp/tpi.mdp -o tpi -po tpi -pp tpi -c conf.gro
 ```
 
 Now use the `-rerun` flag with `mdrun`:
 
 ```bash
-$ gmx mdrun -deffnm tpi -rerun
+$ gmx mdrun -deffnm tpi -rerun prd.xtc
 ```
 
 Analysis
 --------
 
-The log file file should contain a line with Greek letter mu.
-TODO: expand
+The log file file should contain a l
 
 Summary
 -------
