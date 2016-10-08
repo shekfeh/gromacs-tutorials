@@ -49,7 +49,7 @@ will be different for your system):
 
 
     [ System ]
-    TIP4PEW in water
+    Methane in water
 
     [ Molecules ] 
     SOL               395
