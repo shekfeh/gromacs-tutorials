@@ -1,4 +1,4 @@
-[Return to main page](https://wesbarnett.github.io/gromacs-tutorials/)
+[Return to main page](https://github.com/wesbarnett/gromacs-tutorials)
 
 Tutorial 5: Methane-Methane PMF from Umbrella Sampling
 ======================================================
@@ -222,4 +222,4 @@ In this tutorial we used GROMACS COM pull code to do umbrella sampling on two
 methanes in water. From there we used *gmx wham* to extract the potential of
 mean force.
 
-[Return to main page](https://wesbarnett.github.io/gromacs-tutorials/)
+[Return to main page](https://github.com/wesbarnett/gromacs-tutorials)

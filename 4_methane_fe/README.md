@@ -1,4 +1,4 @@
-[Return to main page](https://wesbarnett.github.io/gromacs-tutorials/)
+[Return to main page](https://github.com/wesbarnett/gromacs-tutorials)
 
 Tutorial 4: Methane Free Energy of Solvation
 ============================================
@@ -248,4 +248,4 @@ methane remained on, so its as if we were removing the methane from the water
 and placing it in a vacuum. Our result of 2.289 kcal /mol is comparable to
 published results.
 
-[Return to main page](https://wesbarnett.github.io/gromacs-tutorials/)
+[Return to main page](https://github.com/wesbarnett/gromacs-tutorials)

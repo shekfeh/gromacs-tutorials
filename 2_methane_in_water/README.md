@@ -1,4 +1,4 @@
-[Return to main page](https://wesbarnett.github.io/gromacs-tutorials/)
+[Return to main page](https://github.com/wesbarnett/gromacs-tutorials)
 
 Tutorial 2: One Methane in Water
 ================================
@@ -290,4 +290,4 @@ generated a topology for it. From there we put water around it using *gmx
 solvated*. After this we ran a simulation, just like last time. Lastly, we found
 the C-OW radial distribution function using *gmx rdf*.
 
-[Return to main page](https://wesbarnett.github.io/gromacs-tutorials/)
+[Return to main page](https://github.com/wesbarnett/gromacs-tutorials)

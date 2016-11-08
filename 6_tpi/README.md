@@ -1,4 +1,4 @@
-[Return to main page](https://wesbarnett.github.io/gromacs-tutorials/)
+[Return to main page](https://github.com/wesbarnett/gromacs-tutorials)
 
 Tutorial 6: Excess Chemical Potential of Methane using Test Particle Insertion
 ======================================================
@@ -119,4 +119,4 @@ In this tutorial we looked at how to use GROMACS to perform test particle
 insertion in order to get the excess chemical potential of a united-atom OPLS
 methane.
 
-[Return to main page](https://wesbarnett.github.io/gromacs-tutorials/)
+[Return to main page](https://github.com/wesbarnett/gromacs-tutorials)

@@ -1,4 +1,4 @@
-[Return to main page](https://wesbarnett.github.io/gromacs-tutorials/)
+[Return to main page](https://github.com/wesbarnett/gromacs-tutorials)
 
 Tutorial 3: Several Methanes in Water
 =====================================
@@ -106,4 +106,4 @@ distribution function, but this time for methane-methane. We had a to add a
 correction due to this, and from there we were able to get the potential of mean
 force.
 
-[Return to main page](https://wesbarnett.github.io/gromacs-tutorials/)
+[Return to main page](https://github.com/wesbarnett/gromacs-tutorials)
