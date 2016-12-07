@@ -182,11 +182,19 @@ After running *gmx wham* you'll get the potential of mean force in a file named
 
 ![PMF](profile1.png)
 
-We would expect the interaction to go to zero at longer distances. We are
-missing a correction of 2kTln(w) that needs to be added. Additionally we need to
-shift the plot up such that its tail goes to zero. I found adding about 77
-worked for my particular system, but yours may be different. To plot this in
-gnuplot do the following in a gnuplot terminal:
+We would expect the interaction to go to zero at longer distances. Because we
+used a 3-dimensional biasing potential, however, we need to include a
+correction. Imagine one of the methanes as the reference point. The other
+methane is allowed to sample all around that point at distance *r*, covering the
+surface of some sphere with radius *r*. This adds extra configurational space to
+our sampling, decreasing the entropy. This extra entropic contribution to our
+PMF needs to be removed. Recall that the Gibbs free energy in the isothermal
+isobaric ensemble is -kTln(W) where W is the partition function. In the case of
+our methane dancing around the surface of a sphere, W is proportional to the
+surface area of that sphere. So, a correction of 2kTln(r) needs to be added.
+Additionally we need to shift the plot up such that its tail goes to zero. I
+found adding about 77 worked for my particular system, but yours may be
+different. To plot this in gnuplot do the following in a gnuplot terminal:
 
 ```gnuplot
 > plot 'profile.xvg' u 1:($2+2*8.314e-3*298.15*log($1)+77) w l
